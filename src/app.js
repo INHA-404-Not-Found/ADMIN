@@ -7,7 +7,7 @@ function App() {
       className="App"
       style={{ height: "100%" }}
     >
-      Main />
+      <Main />
     </div>
   );
 }
