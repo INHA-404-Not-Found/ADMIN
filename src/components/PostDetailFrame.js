@@ -1,0 +1,43 @@
+import GainTable from "../admin/GainTable";
+import LossTable from "../admin/LossTable";
+import GainTableEdit from "../admin/GainTableEdit";
+import LossTableEdit from "../admin/LossTableEdit";
+import ImageSet from "../admin/ImageSet";
+import ImageSetEdit from "../admin/ImageSetEdit";
+
+export default function Login() {
+
+    return (
+        <div
+            style={{
+                backgroundColor: "rgba(137, 137, 137, 0.3)"
+            }}
+        >
+            {/*게시글 상세페이지 틀*/}
+            <div
+                style={{
+                    backgroundColor: "white",
+                }}
+            >
+                {/*Header*/}
+                <div>
+                    <div>습득 / 분실</div>
+                    <div><img src="./images/close.png" alt="close" /></div>
+                </div>
+                
+                {/*게시글의 이미지들*/}
+                <div>
+                    <ImageSet />
+                </div>
+
+                <div>
+                    <GainTable />
+                    {/*<LossTable />*/}
+                </div>
+                
+                <button>수정하기</button>
+            </div>
+        </div>   
+    )
+
+}
