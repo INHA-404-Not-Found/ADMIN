@@ -1,9 +1,13 @@
-import Login from "./components/login/Login";
+//import Login from "./components/login/Login";
+import Main from "./components/admin/Main";
 
 function App() {
   return (
-    <div className="App">
-        <Login />
+    <div
+      className="App"
+      style={{ height: "100%" }}
+    >
+      Main />
     </div>
   );
 }
