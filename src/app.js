@@ -1,5 +1,5 @@
 import LoginPage from "./pages/LoginPage";
-import MainPage from "./admin/Main";
+import MainPage from "./pages/MainPage";
 import PostDetailFrame from "./components/PostDetailFrame";
 import PostDetailFrameEdit from "./components/PostDetailEditFrame";
 import AdminManagementPage from "./pages/AdminManagementPage";
