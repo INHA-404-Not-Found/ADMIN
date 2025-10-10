@@ -1,11 +1,12 @@
 import StatusSelect from "../components/StatusSelect";
+import { Link } from "react-router-dom";
 
 export default function Main() {
 
     return (
         <div>
             <div
-                style={{
+               s style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 5fr",
                     gap: "20px",
@@ -37,17 +38,20 @@ export default function Main() {
                         <div>김도담(12234069)</div>
 
                         <img src="./images" alt="logout" />
-                        <div>로그아웃</div>
+                        <div><Link to="/login">로그아웃</Link></div>
+
+                        <img src="./images" alt="dashboard" />
+                        <div><Link to="/">Dashboard</Link></div>
 
                         <img src="./images" alt="write" />
-                        <div>게시글 작성</div>
+                        <div><Link to="/">게시글 작성</Link></div>
 
                         <img src="./images" alt="problem" />
                         <div>문제상황 보고</div>
                             
                         {/*관리자만 보이게*/}
                         <img src="./images" alt="problem" />
-                        <div>관리자 관리</div>
+                        <div><Link to="/adminManagement">관리자 관리</Link></div>
                     </div>
                 </div>
                 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
 
     return (
@@ -29,7 +31,7 @@ export default function Login() {
                     <input type="text" placeholder="value"></input>
 
                     <div>
-                        <input type="submit" value="Sign In" />
+                        <Link to="/"><input type="submit" value="Sign In" /></Link>
                     </div>
                 </form>
             </div>

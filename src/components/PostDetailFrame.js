@@ -5,6 +5,8 @@ import LossTableEdit from "../admin/LossTableEdit";
 import ImageSet from "../admin/ImageSet";
 import ImageSetEdit from "../admin/ImageSetEdit";
 
+import { Link } from "react-router-dom";
+
 export default function Login() {
 
     return (
@@ -22,7 +24,7 @@ export default function Login() {
                 {/*Header*/}
                 <div>
                     <div>습득 / 분실</div>
-                    <div><img src="./images/close.png" alt="close" /></div>
+                    <div><Link to="/"><img src="./images/close.png" alt="close" /></Link></div>
                 </div>
                 
                 {/*게시글의 이미지들*/}
@@ -35,7 +37,7 @@ export default function Login() {
                     {/*<LossTable />*/}
                 </div>
                 
-                <button>수정하기</button>
+                <button><Link to="/postDetailFrameEdit">수정하기</Link></button>
             </div>
         </div>   
     )
