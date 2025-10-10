@@ -1,5 +1,5 @@
 import StatusSelect from "../components/StatusSelect";
-import styles from "../styles/Main.module.css";
+import styles from "../styles/Mainboard.module.css";
 
 import { Link } from "react-router-dom";
 
@@ -9,13 +9,8 @@ export default function Main() {
                 
         <div>
             {/*검색창*/}
-            <div>
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        alert('Search!');
-                    }}
-                >
+            <div className={styles.Search_Part}>
+                <div className={styles.Search}>
                     <select id="stateType">
                         <option id="stateType">분실</option>
                         <option id="stateType">습득</option>
@@ -28,19 +23,21 @@ export default function Main() {
                             <img src="./images/search.png" alt="finder" width="20" height="20" />
                         </button>
                     </div>
-                    
-                    <div>
-                        <label><input type="checkbox" value="미완료" /> 미완료</label>
-                        <label><input type="checkbox" value="완료" />완료</label>
-                        <label><input type="checkbox" value="인계됨" />인계됨</label>
-                    </div>  
-                </form>
+                </div>
+                
+                <div>
+                    <label><input type="checkbox" value="미완료" /> 미완료</label>
+                    <label><input type="checkbox" value="완료" />완료</label>
+                    <label><input type="checkbox" value="인계됨" />인계됨</label>
+                </div>
             </div>
+
+            <br />
 
             {/*게시글 리스트*/}
             <div>
                 {/*여러개 한 번에 삭제 상태 변경 버튼*/}
-                <div>
+                <div className={styles.Select_Option}>
                     <div>n개를 체크하였습니다.</div>
                     
                     <button>삭제</button>
@@ -55,7 +52,7 @@ export default function Main() {
                                 {/* {columns.map((column) => (
                                     <th key={column}>{column}</th>
                                 ))} */}
-                                <th>checkbox</th>
+                                <th><input type="checkbox" /></th>
                                 <th>번호</th>
                                 <th>날짜</th>
                                 <th>제목</th>

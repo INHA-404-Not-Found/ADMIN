@@ -1,19 +1,27 @@
+import styles from "../styles/Login.module.css";
+
 import { Link } from "react-router-dom";
 
 export default function Login() {
 
     return (
-        <div>
+        <div className={styles.Part}>
             {/*로고*/}
-            <div>
-                <div>
-                    <img src="./images/INHA_logo.png" />
-                </div>
-                <div>
-                    분실물 찾기
-                </div>
-                <div>
-                    관리자 페이지
+            <div className={styles.Logo_Container}>
+                <img
+                    src="./images/INHA_logo.png"
+                    style={{ height:"110px" }}
+                />
+                
+                <div style={{ margin: "auto 0" }}>
+                    <div
+                        style={{ fontFamily: 'Pretendard-Bold', fontSize:"40px" }}
+                    >
+                        분실물 찾기
+                    </div>
+                    <div style={{ fontFamily: 'Pretendard-SemiBold', fontSize:"25px" }}>
+                        관리자 페이지
+                    </div>
                 </div>
             </div>
             
@@ -25,13 +33,34 @@ export default function Login() {
                         alert('Sign In!');
                     }}
                 >
-                    <div>학번</div>
-                    <input type="text" placeholder="value"></input>
-                    <div>비밀번호</div>
-                    <input type="text" placeholder="value"></input>
+                    {/*학번 입력*/}
+                    <div className={styles.Input_Label_Container}>
+                        <div>학번</div>
+                        <input
+                            type="text"
+                            className={styles.Input_txt} 
+                            placeholder="value"
+                        />
+                    </div>
+                    
+                    {/*비밀번호 입력*/}
+                    <div className={styles.Input_Label_Container}>
+                        <div>비밀번호</div>
+                        <input
+                            type="text"
+                            className={styles.Input_txt} 
+                            placeholder="value"
+                        />
+                    </div>
 
                     <div>
-                        <Link to="/"><input type="submit" value="Sign In" /></Link>
+                        <Link to="/">
+                            <input
+                                type="submit"
+                                className={styles.Btn} 
+                                value="Sign In"
+                            />
+                        </Link>
                     </div>
                 </form>
             </div>

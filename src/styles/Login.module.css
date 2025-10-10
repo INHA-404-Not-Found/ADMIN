@@ -1,0 +1,44 @@
+.Part {
+    font-family: "Pretendard-SemiBold";
+
+    width: 30%;
+    height: 100%;
+
+    margin: 0 auto;
+}
+
+.Logo_Container {
+    display: flex;
+    flex-direction: row;  /* 가로 나열 */
+
+    justify-content: center; /* 가로축 가운데 정렬 */
+    align-items: center;     /* 세로축 가운데 정렬 */
+    gap: 8px;
+    height: 110px;
+
+    color: #1C63B7;
+}
+
+.Input_txt {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+}
+
+.Input_Label_Container {
+    margin: 20px 0;
+}
+
+.Btn {
+    width: 100%;
+    padding: 10px;
+
+    color: #FFFFFF;
+    box-sizing: border-box;
+    border: 1px solid #215294;
+    background-color: #215294;
+    border-radius: 8px;
+}

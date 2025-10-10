@@ -1,0 +1,14 @@
+.Search_Part {
+    display: flex;
+    flex-direction: column; /* 가로 나열 */
+}
+
+.Search {
+    display: flex;
+    flex-direction: row; /* 가로 나열 */
+}
+
+.Select_Option {
+    display: flex;
+    flex-direction: row; /* 가로 나열 */
+}
