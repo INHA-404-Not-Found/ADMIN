@@ -35,7 +35,7 @@ export default function Login() {
                     {/*<LossPostRegistTable />*/}
                 </div>
                 
-                <button>저장하기</button>
+                <button><Link to="/">저장하기</Link></button>
             </div>
         </div>   
     )
