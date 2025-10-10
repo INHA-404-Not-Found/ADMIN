@@ -44,7 +44,7 @@ export default function Main() {
                         <div><Link to="/">Dashboard</Link></div>
 
                         <img src="./images" alt="write" />
-                        <div><Link to="/">게시글 작성</Link></div>
+                        <div><Link to="/postRegist">게시글 작성</Link></div>
 
                         <img src="./images" alt="problem" />
                         <div>문제상황 보고</div>
