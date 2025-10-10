@@ -17,7 +17,13 @@ export default function GainTable(){
                     <th>작성 날짜</th>
                     <td>2025.10.10.금</td>
                 </tr>
-                
+                <tr>
+                    <th>습득물에 학번 존재 유무</th>
+                    <td>
+                        <input type="checkbox" />
+                        <input />
+                    </td>
+                </tr>
                 <tr>
                     <th>물품 카테고리</th>
                     <td>
