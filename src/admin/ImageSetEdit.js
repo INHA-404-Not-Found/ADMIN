@@ -4,11 +4,11 @@ export default function GainTable(){
     return (
         <div>
             <div> 
-                <img src="./images/" alt="left"/>
+                <img src="./images/left.png" alt="left"/>
                 
                 <img src="./images/" alt="img"/>
                 
-                <img src="./images/" alt="right"/>
+                <img src="./images/right.png" alt="right"/>
             </div>
             
             <div>
