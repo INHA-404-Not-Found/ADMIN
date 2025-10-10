@@ -9,7 +9,7 @@ export default function GainTable(){
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td>김도담 (12234069)</td>
+                    <td>김도담</td>
                 </tr>
                 <tr>
                     <th>작성 날짜</th>
