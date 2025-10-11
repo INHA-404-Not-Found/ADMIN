@@ -1,4 +1,3 @@
-import StatusSelect from "../components/StatusSelect";
 import tableStyles from "../styles/Table2.module.css";
 
 
