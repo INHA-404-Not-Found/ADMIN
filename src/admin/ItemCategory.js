@@ -1,6 +1,6 @@
 import StatusSelect from "../components/StatusSelect";
 import styles from "../styles/Mainboard.module.css";
-import "../styles/Table.css";
+import tableStyles from "../styles/Table.module.css";
 
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export default function ItemCategory() {
             <div>
                 {/*테이블*/}
                 <div>
-                    <table>
+                    <table className={tableStyles.Table}>
                         <thead>
                             <tr>
                                 {/* {columns.map((column) => (
