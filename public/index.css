@@ -53,33 +53,30 @@
 }
 
 html {
-    font-family: 'Pretendard-Regular';
+  font-family: 'Pretendard-Regular';
 
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 
-    font-size: 16px;
+  font-size: 16px;
 }
 
 body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 #root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-table{
-    width: 100%
-}
-
-th, td{
-    text-align: center;
+a {
+  text-decoration: none;
+  color: black;
 }
