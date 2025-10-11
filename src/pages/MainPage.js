@@ -1,6 +1,6 @@
 import Main from "../admin/Main";
 import Logo from "../components/Logo";
-import MenuPage from "../components/MenuPage";
+import Menu from "../components/Menu";
 import styles from "../styles/Main.module.css";
 
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ export default function MainPage() {
                     <br></br>
 
                     {/*메뉴*/}
-                    <MenuPage />
+                    <Menu />
                 </div>
             </div>
 
