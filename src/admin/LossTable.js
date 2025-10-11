@@ -12,6 +12,10 @@ export default function LossTable(){
                     <td>김도담 (12234069)</td>
                 </tr>
                 <tr>
+                    <th>수령인</th>
+                    <td>김도담 / 12234069 / 01093927729 / gemddkim22@gmail.com</td>
+                </tr>
+                <tr>
                     <th>작성 날짜</th>
                     <td>2025.10.10.금</td>
                 </tr>
