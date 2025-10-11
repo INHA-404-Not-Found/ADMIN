@@ -1,0 +1,19 @@
+.Table {
+  width: 100%;
+}
+
+/* 기존 td/th의 border 제거 */
+.Table th, td {
+  border: none; /* ✅ 기존 border 제거 */
+  margin: 0;
+  text-align: center;
+}
+
+.Table tbody th {
+  position: sticky;
+  left: 0;
+}
+
+.Table tbody tr{
+  height: 30px;
+}
