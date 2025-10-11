@@ -1,8 +1,14 @@
+import { useState } from "react";
 import styles from "../styles/Main.module.css";
 
 import { Link } from "react-router-dom";
+import PopUpFrame from './PopUpFrame';
 
 export default function MenuPage() {
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [type, setType] = useState('');
+
+
     return (
         <div className={styles.Menu_Container}>
             <img src="./images/user.png" alt="user" />
@@ -18,7 +24,18 @@ export default function MenuPage() {
             <div><Link to="/itemCategory">물품 카테고리 관리</Link></div>
 
             <img src="./images/add.png" alt="add" />
-            <div><Link to="/postRegist">게시글 작성</Link></div>
+            <div
+                onClick={() => {setShowPopUp(true); setType("add lost post");}}
+                style={{ cursor: "pointer" }}    
+            >분실 게시글 작성</div>
+
+            <img src="./images/add.png" alt="add" />
+            <div
+                onClick={() => {setShowPopUp(true); setType("add gain post");}}
+                style={{ cursor: "pointer" }}    
+            >습득 게시글 작성</div>
+
+            {showPopUp && <PopUpFrame type={type} onClose={() => setShowPopUp(false)} />}
         </div>
     )
 }
