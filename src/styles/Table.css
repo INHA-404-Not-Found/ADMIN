@@ -1,0 +1,35 @@
+/* thead 아래 경계선 두껍게 */
+thead {
+  position: relative;
+  z-index: 1000;
+}
+
+/* 기존 td/th의 border 제거 */
+th,
+td {
+  border: none; /* ✅ 기존 border 제거 */
+  margin: 0;
+}
+
+/* sticky 효과 그대로 유지 */
+thead th {
+  position: sticky;
+  top: 0;
+  border-top: 0;
+  background-clip: padding-box;
+  background-color: #DADEE7;
+}
+
+thead tr {
+  height: 45px;
+  border: 2px solid black;
+}
+
+tbody th {
+  position: sticky;
+  left: 0;
+}
+
+tbody tr{
+  height: 40px;
+}

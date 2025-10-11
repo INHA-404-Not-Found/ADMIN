@@ -1,21 +1,24 @@
 import StatusSelect from "../components/StatusSelect";
 import styles from "../styles/Mainboard.module.css";
+import "../styles/Table.css";
 
 import { Link } from "react-router-dom";
 
 export default function ItemCategory() {
     {/*메인보드*/}
     return (
-        <div>
-            <div style={{ fontFamily:"pretendard-SemiBold", fontSize:"25px" }}>물품 카테고리 관리</div>
+        <div className={styles.Container}>
+            <div className={styles.Title_Container}>물품 카테고리 관리</div>
+
+            <br></br>
 
             {/*검색창*/}
-            <div>
+            <div className={styles.Add_Input}>
                 <input placeholder="물품 카테고리 추가"></input>
                 <button type="submit">추가하기</button>
             </div>
 
-            <br />
+            <br></br>
 
             {/*물품 카테고리 리스트*/}
             <div>

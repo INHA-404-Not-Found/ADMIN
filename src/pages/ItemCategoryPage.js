@@ -11,21 +11,27 @@ export default function ItemCategoryPage() {
         <div
             style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 5fr",
-                gap: "20px",
-
+                gridTemplateColumns: "2fr 9fr",
                 height: "100%"
             }}
         >
             {/*왼쪽 메뉴*/}
-            <div style={{margin:"0 10%"}}>
-                {/*로고*/}
-                <Logo />
+            <div
+                style={{
+                    background: "#fafafa",
+                    border: "1px solid #ddd",
+                    boxShadow: "inset -5px 0 8px rgba(0, 0, 0, 0.15)"
+                }}
+            >
+                <div style={{margin: "0 5% 0 10%" }}>
+                    {/*로고*/}
+                    <Logo />
 
-                <br></br>
+                    <br></br>
 
-                {/*메뉴*/}
-                <MenuPage />
+                    {/*메뉴*/}
+                    <MenuPage />
+                </div>
             </div>
             
             {/*메인보드*/}
