@@ -1,10 +1,14 @@
-.Part {
-    font-family: "Pretendard-SemiBold";
-
-    width: 30%;
+.CenterAlignDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
+}
 
-    margin: 0 auto;
+.Part {   
+    font-family: "Pretendard-SemiBold";
+    width: 30%;
+    margin: auto;
 }
 
 .Logo_Container {
@@ -32,6 +36,7 @@
     margin: 20px 0;
 }
 
+/* submit 버튼 */
 .Btn {
     width: 100%;
     padding: 10px;
@@ -41,4 +46,34 @@
     border: 1px solid #215294;
     background-color: #215294;
     border-radius: 8px;
+}
+
+
+
+
+/* 비밀번호 보이고 안 보이고 바꾸는 번튼 관련 css */
+.Password_Container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.Password_Container input {
+    width: 100%;
+    padding-right: 60px;
+}
+
+.ShowBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #215294;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: "Pretendard-SemiBold";
+}
+
+.ShowBtn:hover {
+    text-decoration: underline;
 }
