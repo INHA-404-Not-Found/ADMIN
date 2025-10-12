@@ -14,7 +14,16 @@ export default function ImageSetEdit(){
                 />
                 
                 <div className={imageSet.Image_Container}>
-                    <img src="./images/" alt="img" />
+                    <img className={imageSet.ImageView} src="./images/햄스터.jpeg" alt="img" />
+                    <img
+                        className={imageSet.Trash}
+                        src= "./images/trash.png"
+                        onClick={() => {
+                            if(window.confirm("이 사진을 삭제하시겠습니까?")){
+                                alert("삭제");
+                            }
+                        }}
+                    />
                 </div>
                 
                 <img 
