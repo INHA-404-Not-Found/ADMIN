@@ -153,3 +153,22 @@
 
 
 /* checkbox 스타일 END -------------------------- */
+
+
+
+
+/* Footer 디자인 */
+
+.FooterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 10px;
+    color: #777;
+}
+
+.FooterContainer div {
+    margin: 5px;
+}

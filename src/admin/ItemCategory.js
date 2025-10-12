@@ -1,6 +1,7 @@
 import StatusSelect from "../components/StatusSelect";
 import styles from "../styles/Mainboard.module.css";
 import tableStyles from "../styles/Table.module.css";
+import pageStyles from "../styles/Pagination.module.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -89,6 +90,25 @@ export default function ItemCategory() {
                     </table>
                 </div>
             </div>
+
+            <div className={pageStyles.Pagination}>
+                <img src="./images/left.png" />
+
+                <div className={pageStyles.PaginationNum}>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+
+                <img src="./images/right.png" />
+            </div>
+
+            <footer className={styles.FooterContainer}>
+                <div>© 2025 404-Not-Found. All rights reserved.</div>
+                <div>jiyun421 eheka78 Kdoby yuminmi</div>
+            </footer>
         </div>
     )
 
