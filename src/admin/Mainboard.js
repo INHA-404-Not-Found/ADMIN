@@ -61,8 +61,28 @@ export default function Main() {
                 <div className={styles.Select_Option}>
                     <span style={{ marginRight: "10px" }}>n개를 체크하였습니다.</span>
                     
-                    <button>삭제</button>
-                    <button>상태 변경: 인계</button>
+                    <button
+                        onClick={() => {
+                            if(window.confirm("삭제하면 복구할 수 없습니다.")){
+                                alert("삭제");
+                            } else{
+                                alert("취소하였습니다.");
+                            }
+                        }}
+                    >
+                        삭제
+                    </button>
+                    <button
+                        onClick={() => {
+                            if(window.confirm("경찰서에 인계를 완료하였습니까?")){
+                                alert("상태를 인계로 변경하였습니다.");
+                            } else{
+                                alert("취소하였습니다.");
+                            }
+                        }}
+                    >
+                        상태 변경: 인계
+                    </button>
                 </div>
 
                 {/*테이블*/}
