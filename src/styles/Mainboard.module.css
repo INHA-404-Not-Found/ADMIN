@@ -109,7 +109,7 @@
 
 .Checkbox_Style{
     font-size: 12px;
-    margin-right: 10px;
+    margin-right: 7px;
 }
 
 .Checkbox_Style [type="checkbox"]{
@@ -120,7 +120,7 @@
     font-family: 'Pretendard-Thin';
     text-align: center;
     height: 30px;
-    width: 70px;
+    width: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
