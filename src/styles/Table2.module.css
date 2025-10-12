@@ -14,16 +14,34 @@
 
 .Table2 [type="text"] {
   width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .Table2 textarea {
   width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Table2 select {
+  width: 50%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .Table2 tbody th{
   background-color: #DADEE7;
+  padding: 0 10px;
 }
 
 .Table2 tbody td{
   background-color: white;
+  padding: 0 10px;
 }
