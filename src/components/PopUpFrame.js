@@ -6,9 +6,10 @@ import React from "react";
 import LostPostEdit from "../post/LostPostEdit";
 import GainPostRegist from "../post/GainPostRegist";
 import LostPostRegist from "../post/LostPostRegist";
+import ReceiverRegist from "../admin/ReceiverRegist";
 
 
-export default function PopUpFrame({type, setType, onClose}) {
+export default function PopUpFrame({type, setType, onClose, onSave}) {
     console.log("팝업 open: ", type);
 
     return (
@@ -37,12 +38,13 @@ export default function PopUpFrame({type, setType, onClose}) {
                     position: "relative",
                 }}
             >
-                {type==="regist gain post" ? <GainPostRegist onClose={onClose} setType={setType} /> : <></>}
-                {type==="regist lost post" ? <LostPostRegist onClose={onClose} setType={setType} /> : <></>}
+                {type==="regist gain post" ? <GainPostRegist onClose={onClose} /> : <></>}
+                {type==="regist lost post" ? <LostPostRegist onClose={onClose} /> : <></>}
                 {type==="gain post" ? <GainPost onClose={onClose} setType={setType} /> : <></>}
                 {type==="lost post" ? <LostPost onClose={onClose} setType={setType} /> : ""}
                 {type==="gain post edit" ? <GainPostEdit onClose={onClose} setType={setType} /> : <></>}
                 {type==="lost post edit" ? <LostPostEdit onClose={onClose} setType={setType} /> : ""}
+                {type==="regist receiver" ? <ReceiverRegist onClose={onClose} onSave={onSave} /> : ""}
 
             </div>
         </div>
