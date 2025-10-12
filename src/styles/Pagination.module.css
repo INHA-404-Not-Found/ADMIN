@@ -29,7 +29,7 @@
     font-weight: normal;
 }
 
-.PaginationNum button:hover {
+.PaginationNum button:not(.SelectedPage):hover {
     font-weight: bold;
     color: #215294;
 }
