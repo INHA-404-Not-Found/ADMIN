@@ -39,9 +39,12 @@
 .Table2 tbody th{
   background-color: #DADEE7;
   padding: 0 10px;
+  text-align: left;
 }
 
 .Table2 tbody td{
+  font-family: "Pretendard-Thin";
   background-color: white;
   padding: 0 10px;
+  text-align: left;
 }

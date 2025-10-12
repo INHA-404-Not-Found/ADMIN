@@ -54,9 +54,9 @@ export default function GainPostEdit ({ onClose, setType }) {
             >
                 <button
                     style={{
-                        backgroundColor: "#215294",
-                        color: "white",
-                        border: "none",
+                        backgroundColor: "white",
+                        color: "#215294",
+                        border: "1px solid #215294",
                         borderRadius: "8px",
                         padding: "8px 40px",
                         cursor: "pointer",
