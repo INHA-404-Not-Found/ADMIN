@@ -101,6 +101,7 @@ export default function Main() {
                                 <th>제목</th>
                                 <th>카테고리</th>
                                 <th>작성자</th>
+                                <th>수령인</th>
                                 <th>상태</th>
                             </tr>
                         </thead>
@@ -127,6 +128,7 @@ export default function Main() {
                                         </td>
                                         <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
                                         <td style={{ textAlign:"center" }}>김도담</td>
+                                        <td style={{ textAlign:"center" }}>최지윤</td>
                                         <td style={{ textAlign:"center" }}>
                                             <StatusSelect />
                                         </td>
@@ -143,6 +145,7 @@ export default function Main() {
                                         </td>
                                         <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
                                         <td style={{ textAlign:"center" }}>김도담</td>
+                                        <td style={{ textAlign:"center" }}>-</td>
                                         <td style={{ textAlign:"center" }}>
                                             <StatusSelect />
                                         </td>
