@@ -171,7 +171,7 @@ export default function Main() {
 
             <footer className={styles.FooterContainer}>
                 <div>© 2025 404-Not-Found. All rights reserved.</div>
-                <div>jiyun421 eheka78 Kdoby yuminmi</div>
+                <div>jiyun421 | eheka78 | Kdoby | yuminmi</div>
             </footer>
 
             {showPopUp && <PopUpFrame type={type} setType={setType} onClose={() => setShowPopUp(false)} />}

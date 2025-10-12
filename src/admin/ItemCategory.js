@@ -107,7 +107,7 @@ export default function ItemCategory() {
 
             <footer className={styles.FooterContainer}>
                 <div>© 2025 404-Not-Found. All rights reserved.</div>
-                <div>jiyun421 eheka78 Kdoby yuminmi</div>
+                <div>jiyun421 | eheka78 | Kdoby | yuminmi</div>
             </footer>
         </div>
     )
