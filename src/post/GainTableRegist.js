@@ -2,8 +2,13 @@ import { ITEM } from "../assets/ItemAsset";
 import { LOCATION } from "../assets/LocationAsset";
 import tableStyles from "../styles/Table2.module.css";
 import checkboxStyle from "../styles/CheckboxLabel.module.css";
+import toggleStyle from "../styles/Toggle.module.css";
+
+import { useState } from "react";
+
 
 export default function GainTableRegist(){
+    const [toggleChecked, setToggleChecked] = useState(false);
 
     return (
         <>
@@ -12,8 +17,34 @@ export default function GainTableRegist(){
                     <tr>
                         <th>습득물에 학번 존재 유무</th>
                         <td>
-                            <input type="checkbox" />
-                            <input />
+                            <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignItems: "center" }}>
+                                {/* 토글 체크박스 */}
+                                <input
+                                    type="checkbox"
+                                    id="Toggle"
+                                    className={toggleStyle.Toggle}
+                                    checked={toggleChecked}
+                                    onChange={(e) => setToggleChecked(e.target.checked)}
+                                    hidden
+                                />
+
+                                <label htmlFor="Toggle" className={toggleStyle.ToggleSwitch}>
+                                    <span className={toggleStyle.ToggleButton}></span>
+                                </label>
+
+                                {/* 체크박스 상태에 따라 활성화/비활성화 */}
+                                <input
+                                    type="text"
+                                    disabled={!toggleChecked}
+                                    placeholder={toggleChecked ? "작성 가능" : "토글 켜야 입력 가능"}
+                                    style={{
+                                        padding: "5px 10px",
+                                        border: "1px solid #ccc",
+                                        borderRadius: "5px",
+                                        flex: 1,
+                                    }}
+                                />
+                            </div>
                         </td>
                     </tr>      
                     <tr>
