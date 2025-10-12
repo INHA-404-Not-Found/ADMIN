@@ -2,9 +2,16 @@ import StatusSelect from "../components/StatusSelect";
 import styles from "../styles/Mainboard.module.css";
 import tableStyles from "../styles/Table.module.css";
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ItemCategory() {
+
+    function categoryEdit(i){
+        const categoryName = prompt("수정할 카테고리 이름을 적으세요");
+        
+    }
+
     {/*메인보드*/}
     return (
         <div className={styles.Container}>
@@ -46,10 +53,14 @@ export default function ItemCategory() {
                             ))} */}
                             {Array.from({ length: 10 }).map((_, i) => (
                                 <tr key={i}>
-                                    <td>{i+1}</td>
-                                    <td>지갑(현금, 카드)</td>
-                                    <td>수정하기</td>
-                                    <td>삭제하기</td>
+                                    <td style={{ textAlign:"center" }}>{i+1}</td>
+                                    <td style={{ textAlign:"center" }}>지갑(현금, 카드)</td>
+                                    <td style={{ textAlign:"center" }}
+                                        onClick={() => categoryEdit(i)}
+                                    >  
+                                        수정하기
+                                    </td>
+                                    <td style={{ textAlign:"center" }}>삭제하기</td>
                                 </tr>
                                 ))}
                             
