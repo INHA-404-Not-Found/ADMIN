@@ -21,7 +21,10 @@ export default function GainTableEdit(){
                         <td>
                             <div className={checkboxStyle.Checkbox_Style}>
                                 {ITEM.map((e) => (
-                                    <label key={e}><input type="checkbox" /><span>{e}</span></label>
+                                    <label key={e}>
+                                        <input type="checkbox" />
+                                        <span>{e}</span>
+                                    </label>
                                 ))}
                             </div>
                         </td>

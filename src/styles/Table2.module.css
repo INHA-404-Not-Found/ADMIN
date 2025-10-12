@@ -1,6 +1,5 @@
 .Table2 {
   width: 100%;
-  border-spacing: 10px 3px;
 }
 
 .Table2 th, td {
@@ -19,4 +18,12 @@
 
 .Table2 textarea {
   width: 100%;
+}
+
+.Table2 tbody th{
+  background-color: #DADEE7;
+}
+
+.Table2 tbody td{
+  background-color: white;
 }

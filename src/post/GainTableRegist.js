@@ -19,11 +19,14 @@ export default function GainTableRegist(){
                     <tr>
                         <th>물품 카테고리</th>
                         <td>
-                            <div className={checkboxStyle.Checkbox_Style}>
-                                {ITEM.map((e) => (
-                                    <label key={e}><input type="checkbox" /><span>{e}</span></label>
-                                ))}
-                            </div>
+                        <div className={checkboxStyle.Checkbox_Style}>
+                            {ITEM.map((e) => (
+                                <label key={e}>
+                                    <input type="checkbox" />
+                                    <span>{e}</span>
+                                </label>
+                            ))}
+                        </div>
                         </td>
                     </tr>
                     <tr>
