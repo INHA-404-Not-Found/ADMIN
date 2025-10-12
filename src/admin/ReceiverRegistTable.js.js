@@ -10,11 +10,11 @@ export default function ReceiverRegistTable () {
                     <td>1</td>
                 </tr>
                 <tr>
-                    <th>수령인</th>
+                    <th>수령인 <span style={{color:"#fe2828ff"}}>*</span></th>
                     <td><input type="text" /></td>
                 </tr>
                 <tr>
-                    <th>이메일</th>
+                    <th>이메일 <span style={{color:"#fe2828ff"}}>*</span></th>
                     <td>
                         <div style={{ display: "flex", flexDirection:"row", boxSizing: "border-box" }}>
                             <input type="text" defaultValue="010" style={{ marginRight:"5px" }} />
@@ -24,7 +24,7 @@ export default function ReceiverRegistTable () {
                     </td>
                 </tr>
                 <tr>
-                    <th>전화번호</th>
+                    <th>전화번호 <span style={{color:"#fe2828ff"}}>*</span></th>
                     <td>
                         <div style={{ display: "flex", flexDirection:"row", boxSizing: "border-box" }}>
                             <input type="text" defaultValue="010" style={{ marginRight:"5px" }} />
