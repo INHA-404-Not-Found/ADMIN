@@ -96,7 +96,7 @@ export default function ItemCategory() {
 
                 <div className={pageStyles.PaginationNum}>
                     <button>1</button>
-                    <button>2</button>
+                    <button className={pageStyles.SelectedPage}>2</button>
                     <button>3</button>
                     <button>4</button>
                     <button>5</button>

@@ -159,7 +159,7 @@ export default function Main() {
                 <img src="./images/left.png" />
 
                 <div className={pageStyles.PaginationNum}>
-                    <button>1</button>
+                    <button className={pageStyles.SelectedPage}>1</button>
                     <button>2</button>
                     <button>3</button>
                     <button>4</button>
