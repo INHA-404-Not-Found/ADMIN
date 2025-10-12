@@ -8,7 +8,6 @@ export default function MenuPage() {
     const [showPopUp, setShowPopUp] = useState(false);
     const [type, setType] = useState('');
 
-
     return (
         <div className={styles.Menu_Container}>
             <img src="./images/user.png" alt="user" />
@@ -25,13 +24,13 @@ export default function MenuPage() {
 
             <img src="./images/add.png" alt="add" />
             <div
-                onClick={() => {setShowPopUp(true); setType("add lost post");}}
+                onClick={() => {setShowPopUp(true); setType("regist lost post");}}
                 style={{ cursor: "pointer" }}    
             >분실 게시글 작성</div>
 
             <img src="./images/add.png" alt="add" />
             <div
-                onClick={() => {setShowPopUp(true); setType("add gain post");}}
+                onClick={() => {setShowPopUp(true); setType("regist gain post");}}
                 style={{ cursor: "pointer" }}    
             >습득 게시글 작성</div>
 
