@@ -1,10 +1,7 @@
 import ItemCategory from "../admin/ItemCategory";
-import Main from "../admin/Main";
 import Logo from "../components/Logo";
 import Menu from "../components/Menu";
-import styles from "../styles/Main.module.css";
 
-import { Link } from "react-router-dom";
 
 export default function ItemCategoryPage() {
     return (

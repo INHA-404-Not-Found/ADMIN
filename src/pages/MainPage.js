@@ -1,9 +1,7 @@
-import Main from "../admin/Main";
+import Mainboard from "../admin/Mainboard";
 import Logo from "../components/Logo";
 import Menu from "../components/Menu";
-import styles from "../styles/Main.module.css";
 
-import { Link } from "react-router-dom";
 
 export default function MainPage() {
     return (
@@ -34,7 +32,7 @@ export default function MainPage() {
             </div>
 
             {/*메인보드*/}
-            <Main />
+            <Mainboard />
         </div>
     )
 
