@@ -58,7 +58,7 @@ export default function LostPost ({ onClose, setType }) {
                         border: "none",
                         borderRadius: "8px",
                         padding: "8px 40px",
-                        cursor: "pointer",
+                        cursor: "pointer",             
                     }}
                     onClick={() => { setType("lost post edit"); }}
                 >
