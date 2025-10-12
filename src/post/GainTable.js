@@ -4,7 +4,7 @@ export default function GainTable(){
 
     return (
         <>
-        <table className={tableStyles.Table}>
+        <table className={tableStyles.Table2}>
             <tbody>
                 <tr>
                     <th>번호</th>
@@ -40,10 +40,14 @@ export default function GainTable(){
                     <th>상태</th>
                     <td>미완료</td>
                 </tr>
+                <tr>
+                    <th>수령인</th>
+                    <td>김도담 / 12234069 / 01093927729 / gemddkim22@gmail.com</td>
+                </tr>
             </tbody>
         </table>
 
-        <table className={tableStyles.Table}>
+        <table className={tableStyles.Table2}>
             <tbody>
                 <tr>
                     <th>제목</th>
