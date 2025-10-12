@@ -1,19 +1,22 @@
-.Table {
+.Table2 {
+  width: 100%;
+  border-spacing: 10px 3px;
+}
+
+.Table2 th, td {
+  border: none;
+  margin: 0;
+  text-align: left;
+}
+
+.Table2 tbody tr{
+  height: 30px;
+}
+
+.Table2 [type="text"] {
   width: 100%;
 }
 
-/* 기존 td/th의 border 제거 */
-.Table th, td {
-  border: none; /* ✅ 기존 border 제거 */
-  margin: 0;
-  text-align: center;
-}
-
-.Table tbody th {
-  position: sticky;
-  left: 0;
-}
-
-.Table tbody tr{
-  height: 30px;
+.Table2 textarea {
+  width: 100%;
 }

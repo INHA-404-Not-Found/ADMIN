@@ -1,0 +1,52 @@
+/* checkbox 스타일 ----------------------------- */
+
+.Checkbox_Style {
+    display: flex;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.Checkbox_Style [type="checkbox"]{
+    display: none;
+}
+
+.Checkbox_Style label{
+    margin: 0 5px;
+}
+
+.Checkbox_Style span{
+    font-family: 'Pretendard-Thin';
+    text-align: center;
+    height: 30px;
+    display: flex;
+    margin: 0 2px;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #dcdcdc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #A8A8A8;
+}
+
+.Checkbox_Style [type="checkbox"]:checked + span{
+    border:3px solid #A8A8A8;
+    background-color: #A8A8A8;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.Checkbox_Style [type="checkbox"]:disabled + span{
+    text-align: center;
+    height:40px;
+    width:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #f3f3f3;
+    background-color: #f3f3f3;
+    color:#dcdcdc;
+    box-sizing: border-box;
+}
+
+
+/* checkbox 스타일 END -------------------------- */
