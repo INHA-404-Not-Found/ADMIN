@@ -60,7 +60,7 @@ export default function LostPostRegist ({ onClose, setType }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
-                    onClick={() => { setType("lost post"); }}
+                    onClick={() => { setType("gain post"); }}
                 >
                     취소하기
                 </button>
@@ -75,20 +75,7 @@ export default function LostPostRegist ({ onClose, setType }) {
                         cursor: "pointer",
                     }}
                 >
-                    수정 저장하기
-                </button>
-
-                <button
-                    style={{
-                        backgroundColor: "#215294",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        padding: "8px 40px",
-                        cursor: "pointer",
-                    }}
-                >
-                    삭제하기
+                    저장하기
                 </button>
             </div>
         </div>
