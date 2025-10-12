@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ImageSet from "../components/ImageSet";
 import LostTableRegist from './LostTableRegist';
 
-export default function LostPostRegist ({ onClose, setType }) {
+export default function LostPostRegist ({ onClose }) {
     return (
         <div>
             {/* Header */}
@@ -53,14 +53,14 @@ export default function LostPostRegist ({ onClose, setType }) {
             >
                 <button
                     style={{
-                        backgroundColor: "#215294",
-                        color: "white",
-                        border: "none",
+                        backgroundColor: "white",
+                        color: "#215294",
+                        border: "1px solid #215294",
                         borderRadius: "8px",
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
-                    onClick={() => { setType("gain post"); }}
+                    onClick={onClose}
                 >
                     취소하기
                 </button>
