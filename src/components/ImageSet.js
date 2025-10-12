@@ -13,7 +13,11 @@ export default function ImageSet(){
             />
             
             <div className={imageSet.Image_Container}>
-                <img src="./images/햄스터.jpeg" alt="img" />
+                <img 
+                    className={imageSet.ImageView}
+                    src="./images/햄스터.jpeg"
+                    alt="img"
+                />
             </div>
             
             <img 
