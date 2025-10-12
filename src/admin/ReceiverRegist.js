@@ -32,6 +32,16 @@ export default function ReceiverRegist ({ onClose }) {
                 </div>
             </div>
 
+            <div
+                style={{
+                    fontFamily:"Pretendard-Thin",
+                    textAlign:"left",
+                    margin: "5px 0 10px"
+                }}
+            >
+                * 수령을 완료하려면 수령인의 정보를 입력해야합니다.
+            </div>
+
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
                 <ReceiverRegistTable />
