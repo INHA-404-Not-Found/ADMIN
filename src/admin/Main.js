@@ -10,10 +10,6 @@ export default function Main() {
     const [showPopUp, setShowPopUp] = useState(false);
     const [type, setType] = useState("");
 
-    useEffect (() => {
-        console.log(type);
-    }, [type])
-
     {/*메인보드*/}
     return (
         <div className={styles.Container}>
@@ -99,34 +95,34 @@ export default function Main() {
                             {Array.from({ length: 10 }).map((_, i) => (
                                 <>
                                     <tr key={i}>
-                                        <td><input type="checkbox" /></td>
-                                        <td>{i+1}</td>
-                                        <td>2025.10.10.금</td>
-                                        <td>분실</td>
+                                        <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
+                                        <td style={{ textAlign:"center" }}>{i+1}</td>
+                                        <td style={{ textAlign:"center" }}>2025.10.10.금</td>
+                                        <td style={{ textAlign:"center" }}>분실</td>
                                         <td style={{ textAlign: "left", padding: "0 5px" }}
                                             onClick={() => {setShowPopUp(true); setType("lost post");}}
                                         >
                                             검정색 지갑 하텍 강당에서 분실하였습니다.
                                         </td>
-                                        <td>지갑</td>
-                                        <td>김도담</td>
-                                        <td>
+                                        <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
+                                        <td style={{ textAlign:"center" }}>김도담</td>
+                                        <td style={{ textAlign:"center" }}>
                                             <StatusSelect />
                                         </td>
                                     </tr>
                                     <tr key={i+1}>
-                                        <td><input type="checkbox" /></td>
-                                        <td>{i+2}</td>
-                                        <td>2025.10.10.금</td>
-                                        <td>습득</td>
+                                        <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
+                                        <td style={{ textAlign:"center" }}>{i+2}</td>
+                                        <td style={{ textAlign:"center" }}>2025.10.10.금</td>
+                                        <td style={{ textAlign:"center" }}>습득</td>
                                         <td style={{ textAlign: "left", padding: "0 5px" }} 
                                             onClick={() => {setShowPopUp(true); setType("gain post");}}
                                         >
                                             검정색 지갑 찾음.
                                         </td>
-                                        <td>지갑</td>
-                                        <td>김도담</td>
-                                        <td>
+                                        <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
+                                        <td style={{ textAlign:"center" }}>김도담</td>
+                                        <td style={{ textAlign:"center" }}>
                                             <StatusSelect />
                                         </td>
                                     </tr>
