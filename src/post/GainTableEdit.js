@@ -77,11 +77,6 @@ export default function GainTableEdit(){
                             <input type="text" />
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            
-            <table className={tableStyles.Table2}>
-                <tbody>
                     <tr>
                         <th>제목</th>
                         <td>

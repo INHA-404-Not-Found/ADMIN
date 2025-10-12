@@ -32,11 +32,6 @@ export default function LostTable(){
                         <th>상태</th>
                         <td>미완료</td>
                     </tr>
-                </tbody>
-            </table>
-
-            <table className={tableStyles.Table2}>
-                <tbody>
                     <tr>
                         <th>제목</th>
                         <td>검정색 지갑 하텍 강당에서 분실하였습니다.</td>

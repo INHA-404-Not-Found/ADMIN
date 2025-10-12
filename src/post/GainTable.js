@@ -44,11 +44,6 @@ export default function GainTable(){
                     <th>수령인</th>
                     <td>김도담 / 12234069 / 01093927729 / gemddkim22@gmail.com</td>
                 </tr>
-            </tbody>
-        </table>
-
-        <table className={tableStyles.Table2}>
-            <tbody>
                 <tr>
                     <th>제목</th>
                     <td>검정색 지갑 하텍 강당에서 습득하였습니다.</td>
