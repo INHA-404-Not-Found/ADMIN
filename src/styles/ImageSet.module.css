@@ -1,0 +1,59 @@
+.Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Image_Container{
+    width: 30%;
+    position: relative;
+    padding-bottom: 30%;
+    margin: 0 10%;
+}
+
+.Image_Container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Icon{
+    width: 25px;
+    height: 25px;
+}
+
+
+/* 업로드 버튼 */
+
+.UploadBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.UploadBtn button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 25px;
+    border: 1px solid #215294;
+    border-radius: 10px;
+    background-color: white;
+    color: #215294;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.UploadBtn button:hover {
+    background-color: #215294;
+    color: white;
+}
+
+.UploadBtn button div {
+    line-height: 25px;
+    font-size: 14px;
+}
