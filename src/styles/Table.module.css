@@ -35,3 +35,8 @@
 .Table tbody tr{
   height: 40px;
 }
+
+.Table tbody tr, th{
+  background-color: white;
+  font-family: 'Pretendard-Light';
+}
