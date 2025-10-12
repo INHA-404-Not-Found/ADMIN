@@ -79,6 +79,10 @@ export default function ReceiverRegist ({ onClose }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
+                    onClick={() => {
+                        alert("수령인 정보가 등록되었습니다.");
+                        onClose();
+                    }}
                 >
                     등록하기
                 </button>
