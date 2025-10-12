@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import ImageSet from "../components/ImageSet";
 import LostTableEdit from "./LostTableEdit";
+import ImageSetEdit from "../components/ImageSetEdit";
 
 export default function LostPostEdit ({ onClose, setType }) {
     return (
@@ -34,7 +34,7 @@ export default function LostPostEdit ({ onClose, setType }) {
 
             {/* 이미지 영역 */}
             <div style={{ marginBottom: "20px" }}>
-                <ImageSet />
+                <ImageSetEdit />
             </div>
 
             {/* 게시글 내용 */}
