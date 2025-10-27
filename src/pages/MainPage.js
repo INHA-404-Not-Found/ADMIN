@@ -2,8 +2,13 @@ import Mainboard from "../admin/Mainboard";
 import Logo from "../components/Logo";
 import Menu from "../components/Menu";
 
+import { useState } from "react";
+import PopUpFrame from "../components/PopUpFrame";
 
 export default function MainPage() {
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [type, setType] = useState('');
+
     return (
         <div
             style={{
@@ -17,7 +22,12 @@ export default function MainPage() {
                 style={{
                     background: "#fafafa",
                     border: "1px solid #ddd",
-                    boxShadow: "inset -5px 0 8px rgba(0, 0, 0, 0.15)"
+                    boxShadow: "inset -5px 0 8px rgba(0, 0, 0, 0.15)",
+
+                    position: "sticky",
+                    top: 0,
+                    overflowY: "auto",
+                    height: "100%",
                 }}
             >
                 <div style={{margin: "0 5% 0 10%" }}>
@@ -27,13 +37,21 @@ export default function MainPage() {
                     <br></br>
 
                     {/*메뉴*/}
-                    <Menu />
+                    <Menu setShowPopUp={setShowPopUp} setType={setType} />
                 </div>
             </div>
 
             {/*메인보드*/}
-            <Mainboard />
+            <div
+                style={{
+                    overflowY: "auto",
+                    height: "100vh",
+                }}
+            >
+                <Mainboard setShowPopUp={setShowPopUp} setType={setType} />
+            </div>
+
+            {showPopUp && <PopUpFrame type={type} setType={setType} onClose={() => setShowPopUp(false)} />}
         </div>
     )
-
 }

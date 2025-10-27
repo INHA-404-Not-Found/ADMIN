@@ -1,15 +1,9 @@
 import StatusSelect from "../components/StatusSelect";
-import PopUpFrame from "../components/PopUpFrame";
 import styles from "../styles/Mainboard.module.css";
 import tableStyles from "../styles/Table.module.css";
 import pageStyles from "../styles/Pagination.module.css";
 
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-export default function Main() {
-    const [showPopUp, setShowPopUp] = useState(false);
-    const [type, setType] = useState("");
+export default function Main({setShowPopUp, setType}) {
 
     {/*메인보드*/}
     return (
@@ -176,8 +170,6 @@ export default function Main() {
                 <div>© 2025 404-Not-Found. All rights reserved.</div>
                 <div>jiyun421 | eheka78 | Kdoby | yuminmi</div>
             </footer>
-
-            {showPopUp && <PopUpFrame type={type} setType={setType} onClose={() => setShowPopUp(false)} />}
         </div>
     )
 

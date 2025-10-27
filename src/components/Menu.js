@@ -1,14 +1,9 @@
-import { useState } from "react";
 import styles from "../styles/Main.module.css";
 
 import { Link, useLocation } from "react-router-dom";
-import PopUpFrame from './PopUpFrame';
 
-export default function MenuPage() {
+export default function Menu({setShowPopUp, setType}) {
     const location = useLocation();
-
-    const [showPopUp, setShowPopUp] = useState(false);
-    const [type, setType] = useState('');
 
     return (
         <div className={styles.Menu_Container}>
@@ -57,8 +52,6 @@ export default function MenuPage() {
                 onClick={() => {setShowPopUp(true); setType("regist gain post");}}
                 style={{ cursor: "pointer" }}    
             >습득 게시글 작성</div>
-
-            {showPopUp && <PopUpFrame type={type} onClose={() => setShowPopUp(false)} />}
         </div>
     )
 }
