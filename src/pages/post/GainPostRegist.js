@@ -1,8 +1,8 @@
-import GainTable from "./ReceiverRegistTable.js";
-import ImageSet from "../components/ImageSet";
-import ReceiverRegistTable from "./ReceiverRegistTable.js";
+import ImageSetEdit from "../../components/ImageSetEdit";
+import GainTableRegist from "./GainTableRegist";
 
-export default function ReceiverRegist ({ onClose }) {
+export default function GainPostRegist ({ onClose }) {
+
     return (
         <div>
             {/* Header */}
@@ -16,7 +16,7 @@ export default function ReceiverRegist ({ onClose }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>수령인 등록</div>
+                <div style={{ fontWeight: "bold" }}>습득 게시물 등록</div>
 
                 <div>
                     <img
@@ -32,19 +32,14 @@ export default function ReceiverRegist ({ onClose }) {
                 </div>
             </div>
 
-            <div
-                style={{
-                    fontFamily:"Pretendard-Thin",
-                    textAlign:"left",
-                    margin: "5px 0 10px"
-                }}
-            >
-                * 수령을 완료하려면 수령인의 정보를 입력해야합니다.
+            {/* 이미지 영역 */}
+            <div style={{ marginBottom: "20px" }}>
+                <ImageSetEdit />
             </div>
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <ReceiverRegistTable />
+                <GainTableRegist />
             </div>
 
             {/* 수정 버튼 */}
@@ -53,7 +48,7 @@ export default function ReceiverRegist ({ onClose }) {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    gap: "10px"
+                    gap: "10px",
                 }}
             >
                 <button
@@ -79,12 +74,8 @@ export default function ReceiverRegist ({ onClose }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
-                    onClick={() => {
-                        alert("수령인 정보가 등록되었습니다.");
-                        onClose();
-                    }}
                 >
-                    등록하기
+                    저장하기
                 </button>
             </div>
         </div>

@@ -1,6 +1,6 @@
-import LoginPage from "./pages/LoginPage";
-import MainPage from "./pages/MainPage";
-import ItemCategoryPage from "./pages/ItemCategoryPage";
+import LoginPage from "./pages/login/LoginPage";
+import MainPage from "./pages/main/MainPage";
+import ItemCategoryPage from "./pages/itemCategory/ItemCategoryPage";
 import FontTest from "./fonts/FontTest";
 
 import React from "react";

@@ -1,7 +1,8 @@
-import GainTable from "./GainTable";
-import ImageSet from "../components/ImageSet";
+import { Link } from "react-router-dom";
+import ImageSet from "../../components/ImageSet";
+import LostTable from "./LostTable";
 
-export default function GainPost ({ onClose, setType }) {
+export default function LostPost ({ onClose, setType }) {
     return (
         <div>
             {/* Header */}
@@ -15,8 +16,8 @@ export default function GainPost ({ onClose, setType }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>습득 게시물</div>
-
+                <div style={{ fontWeight: "bold" }}>분실 게시물</div>
+                
                 <div>
                     <img
                         src="./images/close.png"
@@ -38,7 +39,7 @@ export default function GainPost ({ onClose, setType }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <GainTable />
+                <LostTable />
             </div>
 
             {/* 수정 버튼 */}
@@ -47,7 +48,7 @@ export default function GainPost ({ onClose, setType }) {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    gap: "10px"
+                    gap: "10px",
                 }}
             >
                 <button
@@ -57,9 +58,9 @@ export default function GainPost ({ onClose, setType }) {
                         border: "none",
                         borderRadius: "8px",
                         padding: "8px 40px",
-                        cursor: "pointer",
+                        cursor: "pointer",             
                     }}
-                    onClick={() => { setType("gain post edit"); }}
+                    onClick={() => { setType("lost post edit"); }}
                 >
                     수정하기
                 </button>

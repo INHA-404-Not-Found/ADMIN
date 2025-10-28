@@ -1,12 +1,12 @@
-import GainPost from "../post/GainPost";
-import GainPostEdit from "../post/GainPostEdit";
-import LostPost from "../post/LostPost";
+import GainPost from "../pages/post/GainPost";
+import GainPostEdit from "../pages/post/GainPostEdit";
+import LostPost from "../pages/post/LostPost";
 
 import React from "react";
-import LostPostEdit from "../post/LostPostEdit";
-import GainPostRegist from "../post/GainPostRegist";
-import LostPostRegist from "../post/LostPostRegist";
-import ReceiverRegist from "../admin/ReceiverRegist";
+import LostPostEdit from "../pages/post/LostPostEdit";
+import GainPostRegist from "../pages/post/GainPostRegist";
+import LostPostRegist from "../pages/post/LostPostRegist";
+import ReceiverRegist from "../pages/receiverRegist/ReceiverRegist";
 
 
 export default function PopUpFrame({type, setType, onClose, onSave}) {

@@ -1,9 +1,8 @@
-import { ITEM } from "../assets/ItemAsset";
-import { LOCATION } from "../assets/LocationAsset";
-import tableStyles from "../styles/Table2.module.css";
-import checkboxStyle from "../styles/CheckboxLabel.module.css";
+import { ITEM } from "../../assets/ItemAsset";
+import tableStyles from "../../styles/Table2.module.css";
+import checkboxStyle from "../../styles/CheckboxLabel.module.css";
 
-export default function LostTableRegist(){
+export default function LostTableEdit(){
 
     return (
         <>
@@ -26,9 +25,11 @@ export default function LostTableRegist(){
                         <th>분실 장소</th>
                         <td>
                             <select id="location">
-                                {LOCATION.map((e) => (
-                                    <option key={e} value={e}>{e}</option>
-                                ))}
+                                <option id="location">후문</option>
+                                <option id="location">정문</option>
+                                <option id="location">5호관</option>
+                                <option id="location">60주년기념관</option>
+                                <option id="location">하이테크관</option>
                             </select>
                         </td>
                     </tr>

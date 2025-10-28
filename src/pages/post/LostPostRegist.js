@@ -1,9 +1,8 @@
-import ImageSet from "../components/ImageSet";
-import ImageSetEdit from "../components/ImageSetEdit";
-import GainTableRegist from "./GainTableRegist";
+import { Link } from "react-router-dom";
+import LostTableRegist from './LostTableRegist';
+import ImageSetEdit from "../../components/ImageSetEdit";
 
-export default function GainPostRegist ({ onClose }) {
-
+export default function LostPostRegist ({ onClose }) {
     return (
         <div>
             {/* Header */}
@@ -17,8 +16,8 @@ export default function GainPostRegist ({ onClose }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>습득 게시물 등록</div>
-
+                <div style={{ fontWeight: "bold" }}>분실 게시물 등록</div>
+                
                 <div>
                     <img
                         src="./images/close.png"
@@ -40,7 +39,7 @@ export default function GainPostRegist ({ onClose }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <GainTableRegist />
+                <LostTableRegist />
             </div>
 
             {/* 수정 버튼 */}

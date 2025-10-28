@@ -1,4 +1,4 @@
-import tableStyles from "../styles/Table2.module.css";
+import tableStyles from "../../styles/Table2.module.css";
 
 export default function ReceiverRegistTable () {
 

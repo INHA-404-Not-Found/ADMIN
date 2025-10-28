@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import ImageSet from "../components/ImageSet";
-import LostTableRegist from './LostTableRegist';
+import LostTableEdit from "./LostTableEdit";
+import ImageSetEdit from "../../components/ImageSetEdit";
 
-export default function LostPostRegist ({ onClose }) {
+export default function LostPostEdit ({ onClose, setType }) {
     return (
         <div>
             {/* Header */}
@@ -16,7 +15,7 @@ export default function LostPostRegist ({ onClose }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>분실 게시물 등록</div>
+                <div style={{ fontWeight: "bold" }}>분실 게시물 수정</div>
                 
                 <div>
                     <img
@@ -34,12 +33,12 @@ export default function LostPostRegist ({ onClose }) {
 
             {/* 이미지 영역 */}
             <div style={{ marginBottom: "20px" }}>
-                <ImageSet />
+                <ImageSetEdit />
             </div>
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTableRegist />
+                <LostTableEdit />
             </div>
 
             {/* 수정 버튼 */}
@@ -60,7 +59,7 @@ export default function LostPostRegist ({ onClose }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
-                    onClick={onClose}
+                    onClick={() => { setType("lost post"); }}
                 >
                     취소하기
                 </button>
@@ -75,7 +74,20 @@ export default function LostPostRegist ({ onClose }) {
                         cursor: "pointer",
                     }}
                 >
-                    저장하기
+                    수정 저장하기
+                </button>
+
+                <button
+                    style={{
+                        backgroundColor: "#215294",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "8px 40px",
+                        cursor: "pointer",
+                    }}
+                >
+                    삭제하기
                 </button>
             </div>
         </div>

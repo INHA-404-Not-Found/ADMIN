@@ -1,5 +1,4 @@
-import ImageSet from "../components/ImageSet";
-import ImageSetEdit from "../components/ImageSetEdit";
+import ImageSetEdit from "../../components/ImageSetEdit";
 import GainTableEdit from "./GainTableEdit";
 
 export default function GainPostEdit ({ onClose, setType }) {

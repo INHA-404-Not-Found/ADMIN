@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import LostTableEdit from "./LostTableEdit";
-import ImageSetEdit from "../components/ImageSetEdit";
+import GainTable from "./GainTable";
+import ImageSet from "../../components/ImageSet";
 
-export default function LostPostEdit ({ onClose, setType }) {
+export default function GainPost ({ onClose, setType }) {
     return (
         <div>
             {/* Header */}
@@ -16,8 +15,8 @@ export default function LostPostEdit ({ onClose, setType }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>분실 게시물 수정</div>
-                
+                <div style={{ fontWeight: "bold" }}>습득 게시물</div>
+
                 <div>
                     <img
                         src="./images/close.png"
@@ -34,12 +33,12 @@ export default function LostPostEdit ({ onClose, setType }) {
 
             {/* 이미지 영역 */}
             <div style={{ marginBottom: "20px" }}>
-                <ImageSetEdit />
+                <ImageSet />
             </div>
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTableEdit />
+                <GainTable />
             </div>
 
             {/* 수정 버튼 */}
@@ -48,23 +47,9 @@ export default function LostPostEdit ({ onClose, setType }) {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    gap: "10px",
+                    gap: "10px"
                 }}
             >
-                <button
-                    style={{
-                        backgroundColor: "white",
-                        color: "#215294",
-                        border: "1px solid #215294",
-                        borderRadius: "8px",
-                        padding: "8px 40px",
-                        cursor: "pointer",
-                    }}
-                    onClick={() => { setType("lost post"); }}
-                >
-                    취소하기
-                </button>
-
                 <button
                     style={{
                         backgroundColor: "#215294",
@@ -74,8 +59,9 @@ export default function LostPostEdit ({ onClose, setType }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
+                    onClick={() => { setType("gain post edit"); }}
                 >
-                    수정 저장하기
+                    수정하기
                 </button>
 
                 <button

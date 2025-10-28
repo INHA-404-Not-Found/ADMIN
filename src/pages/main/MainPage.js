@@ -1,11 +1,11 @@
+import Mainboard from "./Mainboard";
+import Logo from "../../components/Logo";
+import Menu from "../../components/Menu";
+
 import { useState } from "react";
-import ItemCategory from "../admin/ItemCategory";
-import Logo from "../components/Logo";
-import Menu from "../components/Menu";
-import PopUpFrame from "../components/PopUpFrame";
+import PopUpFrame from "../../components/PopUpFrame";
 
-
-export default function ItemCategoryPage() {
+export default function MainPage() {
     const [showPopUp, setShowPopUp] = useState(false);
     const [type, setType] = useState('');
 
@@ -14,7 +14,7 @@ export default function ItemCategoryPage() {
             style={{
                 display: "grid",
                 gridTemplateColumns: "2fr 9fr",
-                height: "100%"
+                height: "100%",
             }}
         >
             {/*왼쪽 메뉴*/}
@@ -40,7 +40,7 @@ export default function ItemCategoryPage() {
                     <Menu setShowPopUp={setShowPopUp} setType={setType} />
                 </div>
             </div>
-            
+
             {/*메인보드*/}
             <div
                 style={{
@@ -48,11 +48,10 @@ export default function ItemCategoryPage() {
                     height: "100vh",
                 }}
             >
-                <ItemCategory />
+                <Mainboard setShowPopUp={setShowPopUp} setType={setType} />
             </div>
 
             {showPopUp && <PopUpFrame type={type} setType={setType} onClose={() => setShowPopUp(false)} />}
         </div>
     )
-
 }

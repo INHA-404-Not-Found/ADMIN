@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import ImageSet from "../components/ImageSet";
-import LostTable from "./LostTable";
+import GainTable from "./ReceiverRegistTable.js";
+import ImageSet from "../../components/ImageSet.js";
+import ReceiverRegistTable from "./ReceiverRegistTable.js";
 
-export default function LostPost ({ onClose, setType }) {
+export default function ReceiverRegist ({ onClose }) {
     return (
         <div>
             {/* Header */}
@@ -16,8 +16,8 @@ export default function LostPost ({ onClose, setType }) {
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>분실 게시물</div>
-                
+                <div style={{ fontWeight: "bold" }}>수령인 등록</div>
+
                 <div>
                     <img
                         src="./images/close.png"
@@ -32,14 +32,19 @@ export default function LostPost ({ onClose, setType }) {
                 </div>
             </div>
 
-            {/* 이미지 영역 */}
-            <div style={{ marginBottom: "20px" }}>
-                <ImageSet />
+            <div
+                style={{
+                    fontFamily:"Pretendard-Thin",
+                    textAlign:"left",
+                    margin: "5px 0 10px"
+                }}
+            >
+                * 수령을 완료하려면 수령인의 정보를 입력해야합니다.
             </div>
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTable />
+                <ReceiverRegistTable />
             </div>
 
             {/* 수정 버튼 */}
@@ -48,21 +53,21 @@ export default function LostPost ({ onClose, setType }) {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    gap: "10px",
+                    gap: "10px"
                 }}
             >
                 <button
                     style={{
-                        backgroundColor: "#215294",
-                        color: "white",
-                        border: "none",
+                        backgroundColor: "white",
+                        color: "#215294",
+                        border: "1px solid #215294",
                         borderRadius: "8px",
                         padding: "8px 40px",
-                        cursor: "pointer",             
+                        cursor: "pointer",
                     }}
-                    onClick={() => { setType("lost post edit"); }}
+                    onClick={onClose}
                 >
-                    수정하기
+                    취소하기
                 </button>
 
                 <button
@@ -74,8 +79,12 @@ export default function LostPost ({ onClose, setType }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
+                    onClick={() => {
+                        alert("수령인 정보가 등록되었습니다.");
+                        onClose();
+                    }}
                 >
-                    삭제하기
+                    등록하기
                 </button>
             </div>
         </div>

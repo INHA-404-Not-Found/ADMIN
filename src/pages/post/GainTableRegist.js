@@ -1,12 +1,13 @@
-import { ITEM } from "../assets/ItemAsset";
-import tableStyles from "../styles/Table2.module.css";
-import checkboxStyle from "../styles/CheckboxLabel.module.css";
-import toggleStyle from "../styles/Toggle.module.css";
+import { ITEM } from "../../assets/ItemAsset";
+import { LOCATION } from "../../assets/LocationAsset";
+import tableStyles from "../../styles/Table2.module.css";
+import checkboxStyle from "../../styles/CheckboxLabel.module.css";
+import toggleStyle from "../../styles/Toggle.module.css";
 
 import { useState } from "react";
 
 
-export default function GainTableEdit(){
+export default function GainTableRegist(){
     const [toggleChecked, setToggleChecked] = useState(false);
 
     return (
@@ -49,25 +50,23 @@ export default function GainTableEdit(){
                     <tr>
                         <th>물품 카테고리</th>
                         <td>
-                            <div className={checkboxStyle.Checkbox_Style}>
-                                {ITEM.map((e) => (
-                                    <label key={e}>
-                                        <input type="checkbox" />
-                                        <span>{e}</span>
-                                    </label>
-                                ))}
-                            </div>
+                        <div className={checkboxStyle.Checkbox_Style}>
+                            {ITEM.map((e) => (
+                                <label key={e}>
+                                    <input type="checkbox" />
+                                    <span>{e}</span>
+                                </label>
+                            ))}
+                        </div>
                         </td>
                     </tr>
                     <tr>
                         <th>습득 장소</th>
                         <td>
                             <select id="location">
-                                <option id="location">후문</option>
-                                <option id="location">정문</option>
-                                <option id="location">5호관</option>
-                                <option id="location">60주년기념관</option>
-                                <option id="location">하이테크관</option>
+                                {LOCATION.map((e) => (
+                                    <option key={e} value={e}>{e}</option>
+                                ))}
                             </select>
                         </td>
                     </tr>

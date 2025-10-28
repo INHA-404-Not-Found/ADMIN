@@ -1,7 +1,7 @@
-import StatusSelect from "../components/StatusSelect";
-import styles from "../styles/Mainboard.module.css";
-import tableStyles from "../styles/Table.module.css";
-import pageStyles from "../styles/Pagination.module.css";
+import StatusSelect from "../../components/StatusSelect";
+import styles from "../../styles/Mainboard.module.css";
+import tableStyles from "../../styles/Table.module.css";
+import pageStyles from "../../styles/Pagination.module.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
