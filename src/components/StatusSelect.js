@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopUpFrame from "./PopUpFrame";
 
-export default function StatusSelect() {
+export default function StatusSelect({status}) {
     const [statusType, setStatusType] = useState("미완료");   // 기존 상태
     const [tempStatus, setTempStatus] = useState("");         // 팝업에서 임시 상태
     const [showPopUp, setShowPopUp] = useState(false);
+
+    useEffect(() => {
+        if (status === "UNCOMPLETED") setStatusType("미완료");
+        else if (status === "COMPLETED") setStatusType("완료");
+        else if (status === "TRANSFERRED") setStatusType("인계됨");
+    }, [status]);
 
     const handleChange = (e) => {
         const value = e.target.value;
