@@ -1,7 +1,17 @@
 import LostTableEdit from "./LostTableEdit";
 import ImageSetEdit from "../../components/ImageSetEdit";
+import { useEffect, useState } from "react";
+import { getPost } from "../../api/post";
 
-export default function LostPostEdit ({ onClose, setType }) {
+export default function LostPostEdit ({ onClose, setType, postId }) {
+    const [postDetail, setPostDetail] = useState([]);
+    
+    useEffect(() => {
+        getPost(setPostDetail, postId);
+        console.log(postDetail);
+    }, [postId]);
+
+
     return (
         <div>
             {/* Header */}
@@ -38,7 +48,7 @@ export default function LostPostEdit ({ onClose, setType }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTableEdit />
+                <LostTableEdit postDetail={postDetail} setPostDetail={setPostDetail} />
             </div>
 
             {/* 수정 버튼 */}

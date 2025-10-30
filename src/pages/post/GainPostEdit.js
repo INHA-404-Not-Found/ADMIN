@@ -1,7 +1,16 @@
+import { useEffect, useState } from "react";
 import ImageSetEdit from "../../components/ImageSetEdit";
 import GainTableEdit from "./GainTableEdit";
+import { getPost } from "../../api/post";
 
-export default function GainPostEdit ({ onClose, setType }) {
+export default function GainPostEdit ({ onClose, setType, postId }) {
+    const [postDetail, setPostDetail] = useState([]);
+
+    useEffect(() => {
+        getPost(setPostDetail, postId);
+        console.log(postDetail);
+    }, [postId]);
+    
 
     return (
         <div>
@@ -39,7 +48,7 @@ export default function GainPostEdit ({ onClose, setType }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <GainTableEdit />
+                <GainTableEdit postDetail={postDetail} setPostDetail={setPostDetail} />
             </div>
 
             {/* 수정 버튼 */}

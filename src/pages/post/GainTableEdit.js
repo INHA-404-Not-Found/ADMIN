@@ -3,10 +3,21 @@ import tableStyles from "../../styles/Table2.module.css";
 import checkboxStyle from "../../styles/CheckboxLabel.module.css";
 import toggleStyle from "../../styles/Toggle.module.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllCategories } from "../../api/category";
+import { getAllLocations } from "../../api/location";
 
 
-export default function GainTableEdit(){
+export default function GainTableEdit({postDetail, setPostDetail}){
+    const [categoryList, setCategoryList] = useState([]);
+    const [locationList, setLocationList] = useState([]);
+
+    useEffect(() => {
+        getAllCategories(setCategoryList);
+        getAllLocations(setLocationList);
+    }, []);
+
+
     const [toggleChecked, setToggleChecked] = useState(false);
 
     return (
@@ -22,7 +33,7 @@ export default function GainTableEdit(){
                                     type="checkbox"
                                     id="Toggle"
                                     className={toggleStyle.Toggle}
-                                    checked={toggleChecked}
+                                    checked={postDetail.isPersonal}
                                     onChange={(e) => setToggleChecked(e.target.checked)}
                                     hidden
                                 />
@@ -50,10 +61,24 @@ export default function GainTableEdit(){
                         <th>물품 카테고리</th>
                         <td>
                             <div className={checkboxStyle.Checkbox_Style}>
-                                {ITEM.map((e) => (
-                                    <label key={e}>
-                                        <input type="checkbox" />
-                                        <span>{e}</span>
+                                {categoryList.map((e) => (
+                                    <label key={e.id}>
+                                    <input
+                                        type="checkbox"
+                                        checked={postDetail.categories?.includes(e.name) || false} // postDetail.categories에 있으면 체크
+                                        onChange={() => {
+                                        setPostDetail((prev) => {
+                                            let updatedCategories;
+                                            if (prev.categories.includes(e.name)) {
+                                            updatedCategories = prev.categories.filter((c) => c !== e.name);
+                                            } else {
+                                            updatedCategories = [...prev.categories, e.name];
+                                            }
+                                            return { ...prev, categories: updatedCategories };
+                                        });
+                                        }}
+                                    />
+                                    <span>{e.name}</span>
                                     </label>
                                 ))}
                             </div>
@@ -62,31 +87,42 @@ export default function GainTableEdit(){
                     <tr>
                         <th>습득 장소</th>
                         <td>
-                            <select id="location">
-                                <option id="location">후문</option>
-                                <option id="location">정문</option>
-                                <option id="location">5호관</option>
-                                <option id="location">60주년기념관</option>
-                                <option id="location">하이테크관</option>
+                            <select
+                                id="location"
+                                value={postDetail.locationName || ""} // 기본 선택값 지정
+                                onChange={(e) =>
+                                    setPostDetail((prev) => ({ ...prev, locationName: e.target.value }))
+                                }
+                            >
+                                {locationList.map((e) => (
+                                    <option key={e.id} value={e.name}>
+                                    {e.name}
+                                    </option>
+                                ))}
                             </select>
+                            <input 
+                                type="text" 
+                                style={{ marginTop: "4px" }}
+                                defaultValue={postDetail.locationDetail}
+                            />
                         </td>
                     </tr>
                     <tr>
                         <th>보관 위치</th>
                         <td>
-                            <input type="text" />
+                            <input type="text" defaultValue={postDetail.storedLocation} />
                         </td>
                     </tr>
                     <tr>
                         <th>제목</th>
                         <td>
-                            <input type="text" />
+                            <input type="text" defaultValue={postDetail.title} />
                         </td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea></textarea>
+                            <textarea defaultValue={postDetail.content}></textarea>
                         </td>
                     </tr>
                 </tbody>
