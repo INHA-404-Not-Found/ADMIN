@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import ImageSet from "../../components/ImageSet";
 import LostTable from "./LostTable";
+import { useEffect, useState } from "react";
+import { getPost } from "../../api/post";
 
-export default function LostPost ({ onClose, setType }) {
+export default function LostPost ({ onClose, setType, postId }) {
+    const [postDetail, setPostDetail] = useState([]);
+
+    useEffect(() => {
+        getPost(setPostDetail, postId);
+    }, [postId]);
+    
+
     return (
         <div>
             {/* Header */}
@@ -39,7 +48,7 @@ export default function LostPost ({ onClose, setType }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTable />
+                { postDetail && <LostTable postDetail={postDetail} /> }
             </div>
 
             {/* 수정 버튼 */}
