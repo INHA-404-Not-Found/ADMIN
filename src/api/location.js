@@ -2,7 +2,7 @@ import { TokenStore } from "../TokenStore.js";
 import api from "./api.js";
 
 
-// 카테고리 생성
+// 위치 조회
 export const getAllLocations = async (setLocationList) => {
     try {
         const res = await api.get('/locations');
