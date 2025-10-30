@@ -1,7 +1,24 @@
 import GainTable from "./GainTable";
 import ImageSet from "../../components/ImageSet";
+import { useEffect, useState } from "react";
+import { getPost } from "../../api/post";
+import { getReceiver, getReceiverByPost } from "../../api/receiver";
 
 export default function GainPost ({ onClose, setType, postId }) {
+    const [postDetail, setPostDetail] = useState([]);
+    const [receiver, setReceiver] = useState([]);
+
+    useEffect(() => {
+        getPost(setPostDetail, postId);
+    }, [postId]);
+
+    useEffect(() => {
+        if( postDetail.status != "COMPLETED" ){ return; }
+
+        getReceiverByPost(setReceiver, postId);
+    }, [postDetail])
+    
+
     return (
         <div>
             {/* Header */}
@@ -38,7 +55,7 @@ export default function GainPost ({ onClose, setType, postId }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <GainTable />
+                { postDetail && <GainTable postDetail={postDetail} receiver={receiver} /> }
             </div>
 
             {/* 수정 버튼 */}

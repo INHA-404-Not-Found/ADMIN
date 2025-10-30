@@ -1,6 +1,6 @@
 import tableStyles from "../../styles/Table2.module.css";
 
-export default function GainTable(){
+export default function GainTable({ postDetail, receiver }){
 
     return (
         <>
@@ -8,11 +8,11 @@ export default function GainTable(){
             <tbody>
                 <tr>
                     <th>번호</th>
-                    <td>1</td>
+                    <td>{postDetail.postId}</td>
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td>김도담</td>
+                    <td>{postDetail.writer}</td>
                 </tr>
                 <tr>
                     <th>작성 날짜</th>
@@ -21,36 +21,44 @@ export default function GainTable(){
                 <tr>
                     <th>습득물에 학번 존재 유무</th>
                     <td>
-                        -
+                        {postDetail.studentId}
                     </td>
                 </tr>
                 <tr>
                     <th>물품 카테고리</th>
-                    <td>지갑</td>
+                    <td>{postDetail.categories}</td>
                 </tr>
                 <tr>
                     <th>습득 장소</th>
-                    <td>하텍</td>
+                    <td>
+                        {postDetail.locationName}{" "}
+                        {postDetail.locationDetail 
+                            ? `( ${postDetail.locationDetail} )` : ""}
+                    </td>
                 </tr>
                 <tr>
                     <th>보관 위치</th>
-                    <td>하텍 14층 컴공 학과 사무실</td>
+                    <td>{postDetail.storedLocation}</td>
                 </tr>
                 <tr>
                     <th>상태</th>
-                    <td>미완료</td>
+                    <td>
+                        { postDetail.status === "UNCOMPLETED" ? "미완료" : "" }
+                        { postDetail.status === "COMPLETED" ? "완료" : "" }
+                        { postDetail.status === "POLICE" ? "인계" : "" }
+                    </td>
                 </tr>
                 <tr>
                     <th>수령인</th>
-                    <td>김도담 / 12234069 / 01093927729 / gemddkim22@gmail.com</td>
+                    <td>{receiver}</td>
                 </tr>
                 <tr>
                     <th>제목</th>
-                    <td>검정색 지갑 하텍 강당에서 습득하였습니다.</td>
+                    <td>{postDetail.title}</td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td>제곧내</td>
+                    <td>{postDetail.content}</td>
                 </tr>
             </tbody>
         </table>
