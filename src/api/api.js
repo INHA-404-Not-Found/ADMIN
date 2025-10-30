@@ -9,7 +9,7 @@ const api = axios.create({
 // 새로고침 시 refresh 실행
 (async () => {
   try {
-    const refreshRes = await axios.post("/auth/refresh", {}, { withCredentials: true });
+    const refreshRes = await axios.post("/api/auth/refresh", {}, { withCredentials: true });
 
     const newAccessToken = refreshRes.data.accessToken;
     TokenStore.setToken(newAccessToken);
@@ -24,12 +24,13 @@ const api = axios.create({
 // 요청 시 Access Token 붙이기
 api.interceptors.request.use(cfg => {
     // 로그인 요청은 쿠키 전송 안 함
-    if (cfg.url === "/auth/login") {
+    if (cfg.url === "/api/auth/login") {
         cfg.withCredentials = false;
         return cfg;
     }
 
     const token = TokenStore.getToken();
+    // console.log("token: "  + token);
     if (token) {
         cfg.headers.Authorization = `Bearer ${token}`;
     }
@@ -54,7 +55,7 @@ api.interceptors.response.use(
 
       try {
         const refreshRes = await axios.post(
-          "/auth/token",
+          "/api/auth/refresh",
           {},
           { withCredentials: true }
         );
