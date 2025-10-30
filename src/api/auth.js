@@ -1,9 +1,10 @@
+import { MY } from "../assets/MY.js";
 import { TokenStore } from "../TokenStore.js";
 import api from "./api.js";
 import axios from 'axios';
 
 
-export const login = async (studentId, password) => {
+export const login = async (studentId, password, navigate) => {
     console.log("login start");
     console.log("studentId: " + studentId + " password: " + password);
 
@@ -19,8 +20,14 @@ export const login = async (studentId, password) => {
             password,
             isWeb: true
         });
+
+        TokenStore.setToken(res.data);
+
         console.log(res.data);
         console.log("로그인 성공");
+
+        navigate('/');
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("로그인 실패");
@@ -28,13 +35,35 @@ export const login = async (studentId, password) => {
 };
 
 
-export const logout = async () => {
+export const logout = async (navigate) => {
+    console.log("logout start");
+
     try {
         await api.delete('/auth/logout');
 
+        TokenStore.clearToken();
+
         alert("로그아웃 성공");
         console.log("로그아웃 성공");
-        TokenStore.clearToken();
+
+        navigate('/login');
+
+    } catch (err) {
+        console.error('에러 발생:', err);
+        alert("로그아웃 실패");
+    }
+};
+
+
+// 토큰을 통한 회원 정보 조회
+export const profile = async () => {
+    try {
+        const res = await api.get('/auth/profile');
+
+        MY.setMY(res.data);
+
+        alert("회원 정보 조회");
+        console.log("회원 정보 조회: " + res.data);
 
     } catch (err) {
         console.error('에러 발생:', err);
