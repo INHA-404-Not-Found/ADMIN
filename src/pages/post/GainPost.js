@@ -1,7 +1,7 @@
 import GainTable from "./GainTable";
 import ImageSet from "../../components/ImageSet";
 
-export default function GainPost ({ onClose, setType }) {
+export default function GainPost ({ onClose, setType, postId }) {
     return (
         <div>
             {/* Header */}

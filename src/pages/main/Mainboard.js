@@ -5,7 +5,7 @@ import pageStyles from "../../styles/Pagination.module.css";
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../../api/post";
 
-export default function Main({setShowPopUp, setType}) {
+export default function Main({setShowPopUp, setType, setPostId}) {
     const [postList, setPostList] = useState([]);
 
     useEffect(() => {
@@ -117,7 +117,11 @@ export default function Main({setShowPopUp, setType}) {
                                         {e.type === 'Find' ? "습득" : "분실"}
                                     </td>
                                     <td style={{ textAlign: "left", padding: "0 5px" }}
-                                        onClick={() => {setShowPopUp(true); setType("lost post");}}
+                                        onClick={() => {
+                                            setShowPopUp(true);
+                                            setType("lost post");
+                                            setPostId(e.postId);
+                                        }}
                                     >
                                         {e.title}
                                     </td>

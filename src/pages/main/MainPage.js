@@ -8,6 +8,7 @@ import PopUpFrame from "../../components/PopUpFrame";
 export default function MainPage() {
     const [showPopUp, setShowPopUp] = useState(false);
     const [type, setType] = useState('');
+    const [postId, setPostId] = useState(0);
 
     return (
         <div
@@ -48,10 +49,10 @@ export default function MainPage() {
                     height: "100vh",
                 }}
             >
-                <Mainboard setShowPopUp={setShowPopUp} setType={setType} />
+                <Mainboard setShowPopUp={setShowPopUp} setType={setType} setPostId={setPostId} />
             </div>
 
-            {showPopUp && <PopUpFrame type={type} setType={setType} onClose={() => setShowPopUp(false)} />}
+            {showPopUp && <PopUpFrame type={type} setType={setType} postId={postId} onClose={() => setShowPopUp(false)} />}
         </div>
     )
 }
