@@ -129,7 +129,8 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                     <td style={{ textAlign: "left", padding: "0 5px" }}
                                         onClick={() => {
                                             setShowPopUp(true);
-                                            setType("lost post");
+                                            if(e.type === "FIND"){ setType("gain post"); }
+                                            else if(e.type === "LOST"){ setType("lost post"); }
                                             setPostId(e.postId);
                                         }}
                                     >
