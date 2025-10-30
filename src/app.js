@@ -4,20 +4,20 @@ import ItemCategoryPage from "./pages/itemCategory/ItemCategoryPage";
 import FontTest from "./fonts/FontTest";
 
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App" style={{ height: "100%" }}>
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<LoginPage type="login" />} />
+          <Route path="/login" element={<LoginPage />} />
 
           <Route path="/" element={<MainPage />} />
           <Route path="/itemCategory" element={<ItemCategoryPage />} />
           <Route path="/fontTest" element={<FontTest />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
