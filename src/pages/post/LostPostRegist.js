@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import LostTableRegist from './LostTableRegist';
 import ImageSetEdit from "../../components/ImageSetEdit";
+import { useState } from "react";
+import { registerPost } from "../../api/post";
 
 export default function LostPostRegist ({ onClose }) {
+    const [categories, setCategories] = useState([]);
+    const [location, setLocation] = useState('');
+    const [locationDetail, setLocationDetail] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
+    
     return (
         <div>
             {/* Header */}
@@ -39,7 +48,14 @@ export default function LostPostRegist ({ onClose }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTableRegist />
+                <LostTableRegist 
+                    categories={categories}
+                    setCategories={setCategories} 
+                    setLocation={setLocation} 
+                    setLocationDetail={setLocationDetail}
+                    setTitle={setTitle}
+                    setContent={setContent}
+                />
             </div>
 
             {/* 수정 버튼 */}
@@ -73,6 +89,13 @@ export default function LostPostRegist ({ onClose }) {
                         borderRadius: "8px",
                         padding: "8px 40px",
                         cursor: "pointer",
+                    }}
+                    onClick={() => {
+                        registerPost(
+                            false, 0, categories,
+                            location, locationDetail, '',
+                            title, content, "LOST"
+                        );
                     }}
                 >
                     저장하기
