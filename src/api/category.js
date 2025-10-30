@@ -1,3 +1,4 @@
+import { TokenStore } from "../TokenStore.js";
 import api from "./api.js";
 
 
@@ -10,7 +11,6 @@ export const createCategory = async (name) => {
 
         console.log("createCategory: ", '성공');
         
-        navigate('/itemCategory');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("createCategory 실패");
@@ -19,13 +19,15 @@ export const createCategory = async (name) => {
 
 
 // 전체 카테고리 조회
-export const getAllCategories = async (name) => {
+export const getAllCategories = async (setCategoryList) => {
+    console.log("getAllCategories start");
+    
     try {
-        await api.get('/categories');
+        const res = await api.get('/categories');
 
-        console.log("getAllCategories: ", '성공');
+        console.log("getAllCategories: ", res.data);
         
-        navigate('/itemCategory');
+        setCategoryList(res.data);
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getAllCategories 실패");
@@ -40,7 +42,6 @@ export const getCategory = async (id) => {
 
         console.log("getCategory: ", '성공');
         
-        navigate('/itemCategory');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getCategory 실패");
@@ -57,7 +58,6 @@ export const updateCategory = async (id, name) => {
 
         console.log("updateCategory: ", '성공');
         
-        navigate('/itemCategory');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("updateCategory 실패");
@@ -72,7 +72,6 @@ export const deleteCategory = async (id) => {
 
         console.log("deleteCategory: ", '성공');
         
-        navigate('/itemCategory');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("deleteCategory 실패");

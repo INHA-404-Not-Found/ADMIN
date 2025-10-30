@@ -3,10 +3,16 @@ import styles from "../../styles/Mainboard.module.css";
 import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllCategories } from "../../api/category";
 
 export default function ItemCategory() {
+    const [categoryList, setCategoryList] = useState([]);
+
+    useEffect(() => {
+        getAllCategories(setCategoryList);
+    }, []);
 
     {/*메인보드*/}
     return (
@@ -47,17 +53,10 @@ export default function ItemCategory() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {data.map(({ name, email, phone }) => (
-                                <tr key={name + email + phone}>
-                                    <td>{name}</td>
-                                    <td>{email}</td>
-                                    <td>{phone}</td>
-                                </tr>
-                            ))} */}
-                            {Array.from({ length: 10 }).map((_, i) => (
-                                <tr key={i}>
-                                    <td style={{ textAlign:"center" }}>{i+1}</td>
-                                    <td style={{ textAlign:"center" }}>지갑(현금, 카드)</td>
+                            {categoryList.map((e) => (
+                                <tr key={e.id}>
+                                    <td style={{ textAlign:"center" }}>{e.id}</td>
+                                    <td style={{ textAlign:"center" }}>{e.name}</td>
                                     <td style={{ textAlign:"center" }}
                                         onClick={() => {
                                             const categoryName = prompt("수정할 카테고리 이름을 적으세요");
@@ -84,7 +83,8 @@ export default function ItemCategory() {
                                         삭제하기
                                     </td>
                                 </tr>
-                                ))}
+                            ))}
+                            
                             
                         </tbody>
                     </table>
