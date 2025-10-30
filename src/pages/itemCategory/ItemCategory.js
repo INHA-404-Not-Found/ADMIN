@@ -96,17 +96,6 @@ export default function ItemCategory() {
             </div>
 
             <div className={pageStyles.Pagination}>
-                <img src="./images/left.png" />
-
-                <div className={pageStyles.PaginationNum}>
-                    <button>1</button>
-                    <button className={pageStyles.SelectedPage}>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                </div>
-
-                <img src="./images/right.png" />
             </div>
 
             <footer className={styles.FooterContainer}>
