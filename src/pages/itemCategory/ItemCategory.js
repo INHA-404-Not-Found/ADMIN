@@ -5,10 +5,11 @@ import pageStyles from "../../styles/Pagination.module.css";
 
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllCategories } from "../../api/category";
+import { createCategory, deleteCategory, getAllCategories, updateCategory } from "../../api/category";
 
 export default function ItemCategory() {
     const [categoryList, setCategoryList] = useState([]);
+    const [newCategory, setNewCategory] = useState([]);
 
     useEffect(() => {
         getAllCategories(setCategoryList);
@@ -23,11 +24,14 @@ export default function ItemCategory() {
 
             {/*검색창*/}
             <div className={styles.Add_Input}>
-                <input placeholder="물품 카테고리 추가"></input>
+                <input
+                    placeholder="물품 카테고리 추가" 
+                    onChange={(e) => {setNewCategory(e.target.value);}}
+                />
                 <button
                     type="submit"
                     onClick={() => {
-                        alert("카테고리가 추가되었습니다.");
+                        createCategory(newCategory);
                     }}
                 >
                     추가하기
@@ -62,8 +66,8 @@ export default function ItemCategory() {
                                             const categoryName = prompt("수정할 카테고리 이름을 적으세요");
                                             if(categoryName === ""){
                                                 alert("실패하였습니다.");
-                                            } else{
-                                                alert("추가되었습니다.")
+                                            } else {
+                                                updateCategory(e.id, categoryName);
                                             }
                                         }}
                                     >  
@@ -73,8 +77,8 @@ export default function ItemCategory() {
                                         style={{ textAlign:"center" }}
                                         onClick={() => {
                                             const deleteConfirmMsg = prompt("삭제하면 복구할 수 없습니다. 삭제하려면 카테고리의 이름을 그대로 따라 적으세요.")
-                                            if(deleteConfirmMsg === "지갑(현금, 카드)"){
-                                                alert("삭제되었습니다.");
+                                            if(deleteConfirmMsg === e.name){
+                                                deleteCategory(e.id);
                                             } else{
                                                 alert("실패하였습니다.")
                                             }
