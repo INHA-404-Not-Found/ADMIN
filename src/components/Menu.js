@@ -14,7 +14,7 @@ export default function Menu({setShowPopUp, setType}) {
 
             <img src="./images/logout.png" alt="logout" />
             <div
-                onClick={() => {console.log("logout enter"); logout(navigate);}}
+                onClick={() => { logout(navigate); }}
             >
                 로그아웃
             </div>
