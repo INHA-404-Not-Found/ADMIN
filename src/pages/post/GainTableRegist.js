@@ -68,6 +68,7 @@ export default function GainTableRegist(){
                                     <option key={e} value={e}>{e}</option>
                                 ))}
                             </select>
+                            <input type="text" style={{ marginTop: "4px" }}/>
                         </td>
                     </tr>
                     <tr>
