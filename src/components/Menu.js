@@ -1,9 +1,11 @@
+import { logout } from "../api/auth";
 import styles from "../styles/Main.module.css";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Menu({setShowPopUp, setType}) {
     const location = useLocation();
+    const navigate = useNavigate();
 
     return (
         <div className={styles.Menu_Container}>
@@ -11,7 +13,11 @@ export default function Menu({setShowPopUp, setType}) {
             <div>김도담(12234069)</div>
 
             <img src="./images/logout.png" alt="logout" />
-            <div><Link to="/login">로그아웃</Link></div>
+            <div
+                onClick={() => {console.log("logout enter"); logout(navigate);}}
+            >
+                로그아웃
+            </div>
 
             <img src="./images/dashboard.png" alt="dashboard" />
             <div>
