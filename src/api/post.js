@@ -112,7 +112,7 @@ export const modifyPosts = async (postIds, status) => {
     
     try {
         const res = await api.patch('/posts/update', {
-            postIds,
+            postIds: postIds,
             status
         });
         console.log("modifyPosts: ", res.data);

@@ -3,12 +3,26 @@ import styles from "../../styles/Mainboard.module.css";
 import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
 import { useEffect, useState } from "react";
-import { getAllPosts } from "../../api/post";
+import { getAllPosts, modifyPosts, removePosts } from "../../api/post";
 import { getPostsByKeyword } from './../../api/post';
 
 export default function Main({setShowPopUp, setType, setPostId}) {
     const [postList, setPostList] = useState([]);
     const [keyword, setKeyword] = useState('');
+
+    const [postIdList, setPostIdList] = useState([]);
+
+    const handleCheckboxChange = (postId, checked) => {
+        if (checked) {
+            setPostIdList((prev) => [...prev, postId]);
+        } else {
+            setPostIdList((prev) => prev.filter((id) => id !== postId));
+        }
+    };
+
+    useEffect(() => {
+        console.log(postIdList);
+    }, [postIdList])
 
     useEffect(() => {
         getAllPosts(setPostList, 1);
@@ -71,11 +85,12 @@ export default function Main({setShowPopUp, setType, setPostId}) {
             <div>
                 {/*여러개 한 번에 삭제 상태 변경 버튼*/}
                 <div className={styles.Select_Option}>
-                    <span style={{ marginRight: "10px" }}>n개를 체크하였습니다.</span>
+                    <span style={{ marginRight: "10px" }}>{postIdList.length}개를 체크하였습니다.</span>
                     
                     <button
                         onClick={() => {
                             if(window.confirm("삭제하면 복구할 수 없습니다.")){
+                                removePosts(postIdList);
                                 alert("삭제");
                             } else{
                                 alert("취소하였습니다.");
@@ -87,7 +102,8 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                     <button
                         onClick={() => {
                             if(window.confirm("경찰서에 인계를 완료하였습니까?")){
-                                alert("상태를 인계로 변경하였습니다.");
+                                modifyPosts(postIdList, "POLICE");
+                                alert(postIdList.length + "개의 상태를 인계로 변경하였습니다.");
                             } else{
                                 alert("취소하였습니다.");
                             }
@@ -120,7 +136,15 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                         <tbody>
                             {postList.map((e) => (
                                 <tr key={e.postId}>
-                                    <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
+                                    <td style={{ textAlign:"center" }}>
+                                        <input
+                                            type="checkbox"
+                                            checked={postIdList.includes(e.postId)}
+                                            onChange={(event) =>
+                                                handleCheckboxChange(e.postId, event.target.checked)
+                                            }
+                                        />
+                                    </td>
                                     <td style={{ textAlign:"center" }}>{e.postId}</td>
                                     <td style={{ textAlign:"center" }}>2025.10.10.금</td>
                                     <td style={{ textAlign:"center" }}>
