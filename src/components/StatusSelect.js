@@ -63,10 +63,7 @@ export default function StatusSelect({ status, type, postId }) {
             >
                 <option value="미완료">미완료</option>
                 <option value="완료">완료</option>
-                {type === "FIND" ? 
-                    <option value="인계됨">인계됨</option>
-                    : <></>
-                }
+                <option value="인계됨">인계됨</option>
             </select>
 
             {showPopUp && <PopUpFrame type="regist receiver" postId={postId} onSave={handleSave} onClose={handleClose} /> }
