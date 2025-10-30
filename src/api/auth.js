@@ -21,13 +21,14 @@ export const login = async (studentId, password, navigate) => {
             isWeb: true
         });
 
-        TokenStore.setToken(res.data);
+        TokenStore.setToken(res.data.accessToken);
 
-        console.log(res.data);
+        // console.log(res.data);
         console.log("로그인 성공");
 
-        navigate('/');
+        // profile();
 
+        navigate('/');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("로그인 실패");
@@ -39,7 +40,7 @@ export const logout = async (navigate) => {
     console.log("logout start");
 
     try {
-        await api.delete('/auth/logout');
+        await api.post('/auth/logout');
 
         TokenStore.clearToken();
 
@@ -57,9 +58,12 @@ export const logout = async (navigate) => {
 
 // 토큰을 통한 회원 정보 조회
 export const profile = async () => {
+    console.log("profile start");
+
     try {
         const res = await api.get('/auth/profile');
 
+        console.log(res.data);
         MY.setMY(res.data);
 
         alert("회원 정보 조회");
