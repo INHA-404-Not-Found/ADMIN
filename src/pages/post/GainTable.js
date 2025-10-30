@@ -50,7 +50,7 @@ export default function GainTable({ postDetail, receiver }){
                 </tr>
                 <tr>
                     <th>수령인</th>
-                    <td>{receiver}</td>
+                    <td>{receiver.receiverId} / {receiver.name} / {receiver.email} / {receiver.phoneNumber} / {receiver.studentId}</td>
                 </tr>
                 <tr>
                     <th>제목</th>
