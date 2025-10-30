@@ -2,8 +2,15 @@ import StatusSelect from "../../components/StatusSelect";
 import styles from "../../styles/Mainboard.module.css";
 import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
+import { useEffect, useState } from "react";
+import { getAllPosts } from "../../api/post";
 
 export default function Main({setShowPopUp, setType}) {
+    const [postList, setPostList] = useState([]);
+
+    useEffect(() => {
+        getAllPosts(setPostList, 1);
+    }, []);
 
     {/*메인보드*/}
     return (
@@ -101,52 +108,27 @@ export default function Main({setShowPopUp, setType}) {
                         </thead>
                         
                         <tbody>
-                            {/* {data.map(({ name, email, phone }) => (
-                                <tr key={name + email + phone}>
-                                    <td>{name}</td>
-                                    <td>{email}</td>
-                                    <td>{phone}</td>
+                            {postList.map((e) => (
+                                <tr key={e.postId}>
+                                    <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
+                                    <td style={{ textAlign:"center" }}>{e.postId}</td>
+                                    <td style={{ textAlign:"center" }}>2025.10.10.금</td>
+                                    <td style={{ textAlign:"center" }}>
+                                        {e.type === 'Find' ? "습득" : "분실"}
+                                    </td>
+                                    <td style={{ textAlign: "left", padding: "0 5px" }}
+                                        onClick={() => {setShowPopUp(true); setType("lost post");}}
+                                    >
+                                        {e.title}
+                                    </td>
+                                    <td style={{ textAlign: "left", padding: "0 5px" }}>{e.categories}</td>
+                                    <td style={{ textAlign:"center" }}>{e.writer}</td>
+                                    <td style={{ textAlign:"center" }}>최지윤</td>
+                                    <td style={{ textAlign:"center" }}>
+                                        <StatusSelect status={e.status} />
+                                    </td>
                                 </tr>
-                            ))} */}
-                            {Array.from({ length: 10 }).map((_, i) => (
-                                <>
-                                    <tr key={i}>
-                                        <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
-                                        <td style={{ textAlign:"center" }}>{i+1}</td>
-                                        <td style={{ textAlign:"center" }}>2025.10.10.금</td>
-                                        <td style={{ textAlign:"center" }}>분실</td>
-                                        <td style={{ textAlign: "left", padding: "0 5px" }}
-                                            onClick={() => {setShowPopUp(true); setType("lost post");}}
-                                        >
-                                            검정색 지갑 하텍 강당에서 분실하였습니다.
-                                        </td>
-                                        <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
-                                        <td style={{ textAlign:"center" }}>김도담</td>
-                                        <td style={{ textAlign:"center" }}>최지윤</td>
-                                        <td style={{ textAlign:"center" }}>
-                                            <StatusSelect />
-                                        </td>
-                                    </tr>
-                                    <tr key={i+1}>
-                                        <td style={{ textAlign:"center" }}><input type="checkbox" /></td>
-                                        <td style={{ textAlign:"center" }}>{i+2}</td>
-                                        <td style={{ textAlign:"center" }}>2025.10.10.금</td>
-                                        <td style={{ textAlign:"center" }}>습득</td>
-                                        <td style={{ textAlign: "left", padding: "0 5px" }} 
-                                            onClick={() => {setShowPopUp(true); setType("gain post");}}
-                                        >
-                                            검정색 지갑 찾음.
-                                        </td>
-                                        <td style={{ textAlign: "left", padding: "0 5px" }}>지갑</td>
-                                        <td style={{ textAlign:"center" }}>김도담</td>
-                                        <td style={{ textAlign:"center" }}>-</td>
-                                        <td style={{ textAlign:"center" }}>
-                                            <StatusSelect />
-                                        </td>
-                                    </tr>
-                                </>
-                                ))}
-                            
+                            ))}
                         </tbody>
                     </table>
                 </div>
