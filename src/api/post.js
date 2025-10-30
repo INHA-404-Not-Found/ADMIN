@@ -107,6 +107,9 @@ export const modifyPostImage = async (post_id, files) => {
 
 // 게시물 인계 여부 일괄 수정
 export const modifyPosts = async (postIds, status) => {
+    console.log("modifyPosts start");
+    console.log(postIds, status);
+    
     try {
         const res = await api.patch('/posts/update', {
             postIds,

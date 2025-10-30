@@ -140,7 +140,7 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                     <td style={{ textAlign:"center" }}>{e.writer}</td>
                                     <td style={{ textAlign:"center" }}>최지윤</td>
                                     <td style={{ textAlign:"center" }}>
-                                        <StatusSelect status={e.status} />
+                                        <StatusSelect status={e.status} type={e.type} postId={e.postId} />
                                     </td>
                                 </tr>
                             ))}
