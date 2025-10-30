@@ -42,7 +42,7 @@ export default function LostTableRegist(){
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea></textarea>
+                            <textarea rows="5"></textarea>
                         </td>
                     </tr>
                 </tbody>
