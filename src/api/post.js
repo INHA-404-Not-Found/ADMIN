@@ -18,13 +18,10 @@ export const registerPost = async () => {
         });
         console.log("registerPost: ", res.data.message, "[게시글 ID: ", res.data.postId, "]");
         
-        navigate('/');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("registerPost 실패");
     }
-
-    return response.data;
 };
 
 
@@ -36,39 +33,35 @@ export const registerPostImage = async (post_id, files) => {
         });
         console.log("registerPostImage: ", res.data);
         
-        navigate('/');
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("registerPostImage 실패");
     }
 
-    return response.data;
 };
 
 
 // 게시글 수정
-export const modifyPost = async (post_id) => {
-    try {
-        const res = await api.patch('/posts/'+ post_id, {
-            locationId,
-            locationDetail,
-            title,
-            content,
-            storedLocation,
-            status,
-            type,
-            isPersonal,
-            studentId,
-            categories
-        });
-        console.log("modifyPost: ", res.data);
-    } catch (err) {
-        console.error('에러 발생: ', err);
-        alert("modifyPost 실패");
-    }
-
-    return response.data;
-};
+// export const modifyPost = async (post_id) => {
+//     try {
+//         const res = await api.patch('/posts/'+ post_id, {
+//             locationId,
+//             locationDetail,
+//             title,
+//             content,
+//             storedLocation,
+//             status,
+//             type,
+//             isPersonal,
+//             studentId,
+//             categories
+//         });
+//         console.log("modifyPost: ", res.data);
+//     } catch (err) {
+//         console.error('에러 발생: ', err);
+//         alert("modifyPost 실패");
+//     }
+// };
 
 
 // 게시글 수정
@@ -82,8 +75,6 @@ export const modifyPostImage = async (post_id, files) => {
         console.error('에러 발생: ', err);
         alert("modifyPostImage 실패");
     }
-
-    return response.data;
 };
 
 
@@ -100,7 +91,6 @@ export const modifyPosts = async (postIds, status) => {
         alert("modifyPosts 실패");
     }
 
-    return response.data;
 };
 
 
@@ -113,8 +103,6 @@ export const removePost = async (post_id) => {
         console.error('에러 발생: ', err);
         alert("removePost 실패");
     }
-
-    return response.data;
 };
 
 
@@ -129,8 +117,6 @@ export const removePosts = async (postIds) => {
         console.error('에러 발생: ', err);
         alert("removePosts 실패");
     }
-
-    return response.data;
 };
 
 
@@ -143,27 +129,22 @@ export const getPost = async (post_id) => {
         console.error('에러 발생: ', err);
         alert("getPost 실패");
     }
-
-    return response.data;
 };
 
 
 // 모든 게시물 리스트 가져오기
-export const getAllPosts = async (page = 1) => {
+export const getAllPosts = async (setPostList, page = 1) => {
     try {
         const res = await api.get('/posts', {
             params: { page: page}
         });
         console.log(res.data);
         console.log("getAllPosts: ", "성공");
-        
-        navigate('/');
+        setPostList(res.data);
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getAllPosts 실패");
     }
-
-    return response.data;
 };
 
 
