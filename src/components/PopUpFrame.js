@@ -44,7 +44,7 @@ export default function PopUpFrame({type, setType, postId, onClose, onSave}) {
                 {type==="lost post" ? <LostPost onClose={onClose} setType={setType} postId={postId} /> : ""}
                 {type==="gain post edit" ? <GainPostEdit onClose={onClose} setType={setType} /> : <></>}
                 {type==="lost post edit" ? <LostPostEdit onClose={onClose} setType={setType} /> : ""}
-                {type==="regist receiver" ? <ReceiverRegist onClose={onClose} onSave={onSave} /> : ""}
+                {type==="regist receiver" ? <ReceiverRegist onClose={onClose} onSave={onSave} postId={postId} /> : ""}
 
             </div>
         </div>

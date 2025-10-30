@@ -2,23 +2,28 @@ import api from "./api.js";
 
 
 // 수령인 등록
-/*export const registerReceiver = async () => {
+export const registerReceiver = async (postId, receiver, email, phoneNumber, studentId) => {
+    console.log("registerReceiver start");
+    console.log(postId, receiver, email, phoneNumber, studentId);
+    
     try {
         const res = await api.post('/admin/receivers', {
-            postId,
-            name,
-            email,
-            phoneNumber,
-            studentId
+            postId: postId,
+            name: receiver,
+            email: email,
+            phoneNumber: phoneNumber,
+            studentId: studentId
         });
+
         console.log("registerReceiver: ", res.data.message, "[receiverId: ", res.data.receiverId, "]");
-    
+        alert("수령인 정보가 등록되었습니다.");
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("registerReceiver 실패");
     }
 };
-*/
+
 
 // 수령인 수정
 /*

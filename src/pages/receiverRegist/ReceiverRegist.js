@@ -1,8 +1,16 @@
 import GainTable from "./ReceiverRegistTable.js";
 import ImageSet from "../../components/ImageSet.js";
 import ReceiverRegistTable from "./ReceiverRegistTable.js";
+import { useState } from "react";
+import { registerReceiver } from "../../api/receiver.js";
 
-export default function ReceiverRegist ({ onClose }) {
+export default function ReceiverRegist ({ onClose, postId }) {
+    const [receiver, setReceiver] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [studentId, setStudentId] = useState('');
+
+
     return (
         <div>
             {/* Header */}
@@ -44,7 +52,13 @@ export default function ReceiverRegist ({ onClose }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <ReceiverRegistTable />
+                <ReceiverRegistTable
+                    postId={postId}  
+                    setReceiver={setReceiver}
+                    setEmail={setEmail}
+                    setPhoneNumber={setPhoneNumber}
+                    setStudentId={setStudentId}
+                />
             </div>
 
             {/* 수정 버튼 */}
@@ -80,7 +94,7 @@ export default function ReceiverRegist ({ onClose }) {
                         cursor: "pointer",
                     }}
                     onClick={() => {
-                        alert("수령인 정보가 등록되었습니다.");
+                        registerReceiver(postId, receiver, email, phoneNumber, studentId) 
                         onClose();
                     }}
                 >

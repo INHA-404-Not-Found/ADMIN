@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PopUpFrame from "./PopUpFrame";
 
-export default function StatusSelect({status}) {
+export default function StatusSelect({ status, type, postId }) {
     const [statusType, setStatusType] = useState("미완료");   // 기존 상태
     const [tempStatus, setTempStatus] = useState("");         // 팝업에서 임시 상태
     const [showPopUp, setShowPopUp] = useState(false);
@@ -15,7 +15,7 @@ export default function StatusSelect({status}) {
     const handleChange = (e) => {
         const value = e.target.value;
 
-        if (value === "완료") {
+        if (value === "완료" && type === "FIND") {
             setTempStatus(value);   // 팝업에서 확인할 값
             setShowPopUp(true);     // 팝업 열기
         } else {
@@ -44,7 +44,7 @@ export default function StatusSelect({status}) {
                 <option value="인계됨">인계됨</option>
             </select>
 
-            {showPopUp && <PopUpFrame type="regist receiver" onSave={handleSave} onClose={handleClose} /> }
+            {showPopUp && <PopUpFrame type="regist receiver" postId={postId} onSave={handleSave} onClose={handleClose} /> }
         </>
     );
 }
