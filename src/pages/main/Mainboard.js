@@ -124,7 +124,7 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                     <td style={{ textAlign:"center" }}>{e.postId}</td>
                                     <td style={{ textAlign:"center" }}>2025.10.10.금</td>
                                     <td style={{ textAlign:"center" }}>
-                                        {e.type === 'Find' ? "습득" : "분실"}
+                                        {e.type == 'FIND' ? "습득" : "분실"}
                                     </td>
                                     <td style={{ textAlign: "left", padding: "0 5px" }}
                                         onClick={() => {
