@@ -5,11 +5,12 @@ import api from "./api.js";
 // 카테고리 생성
 export const createCategory = async (name) => {
     try {
-        await api.post('/categories',{
+        await api.post('/categories', {
             name
         });
 
         console.log("createCategory: ", '성공');
+        alert("카테고리가 추가되었습니다.");
         
     } catch (err) {
         console.error('에러 발생: ', err);
@@ -50,14 +51,14 @@ export const getCategory = async (id) => {
 
 
 // 카테고리 수정
-export const updateCategory = async (id, name) => {
+export const updateCategory = async (id, categoryName) => {
     try {
-        await api.put('/categories/' + id, {
-            name
+        const res = await api.patch('/categories/' + id, {
+            name: categoryName
         });
 
-        console.log("updateCategory: ", '성공');
-        
+        console.log("updateCategory: ", res.data);
+        alert("수정되었습니다.");
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("updateCategory 실패");
@@ -71,6 +72,7 @@ export const deleteCategory = async (id) => {
         await api.delete('/categories/' + id);
 
         console.log("deleteCategory: ", '성공');
+        alert("삭제되었습니다.");
         
     } catch (err) {
         console.error('에러 발생: ', err);
