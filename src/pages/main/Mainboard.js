@@ -3,7 +3,7 @@ import styles from "../../styles/Mainboard.module.css";
 import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
 import { useEffect, useState } from "react";
-import { getAllPosts, modifyPosts, removePosts } from "../../api/post";
+import { getAllPosts, getPostsByTags, modifyPosts, removePosts } from "../../api/post";
 import { getPostsByKeyword } from './../../api/post';
 
 export default function Main({setShowPopUp, setType, setPostId}) {
@@ -11,6 +11,13 @@ export default function Main({setShowPopUp, setType, setPostId}) {
     const [keyword, setKeyword] = useState('');
 
     const [postIdList, setPostIdList] = useState([]);
+
+    const [selectedStatus, setSelectedStatus] = useState("");
+    const [selectedType, setSelectedType] = useState("ALL");
+
+    useEffect(() => {
+        getPostsByTags(setPostList, 1, selectedStatus, selectedType);
+    }, [selectedStatus, selectedType])
 
     const handleCheckboxChange = (postId, checked) => {
         if (checked) {
@@ -38,10 +45,16 @@ export default function Main({setShowPopUp, setType, setPostId}) {
             {/*검색창*/}
             <div className={styles.Search_Part}>
                 <div className={styles.Search}>
-                    <select id="stateType" className={styles.State_Type_Select}>
-                        <option id="stateType">분실</option>
-                        <option id="stateType">습득</option>
-                        <option id="stateType">전체</option>
+                    <select
+                        id="stateType"
+                        className={styles.State_Type_Select}
+                        onChange={(e) =>{
+                            setSelectedType(e.target.value);
+                        }}
+                    >
+                        <option id="stateType" value="ALL">전체</option>
+                        <option id="stateType" value="FIND">습득</option>
+                        <option id="stateType" value="LOST">분실</option>
                     </select>
 
                     <div className={styles.Search_Input}>
@@ -62,20 +75,47 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                 
                 <div className={styles.Search_Option}>
                     <label className={styles.Checkbox_Style}>
-                        <input type="checkbox" />
+                        <input
+                            type="radio"
+                            name="status"
+                            value="전체"
+                            checked={selectedStatus === ""}
+                            onChange={() => setSelectedStatus("")}
+                        />
+                        <span>전체</span>
+                    </label>
+                    <label className={styles.Checkbox_Style}>
+                        <input
+                            type="radio"
+                            name="status"
+                            value="미완료"
+                            checked={selectedStatus === "UNCOMPLETED"}
+                            onChange={() => setSelectedStatus("UNCOMPLETED")}
+                        />
                         <span>미완료</span>
                     </label>
 
                     <label className={styles.Checkbox_Style}>
-                        <input type="checkbox" />
+                        <input
+                            type="radio"
+                            name="status"
+                            value="완료"
+                            checked={selectedStatus === "COMPLETED"}
+                            onChange={() => setSelectedStatus("COMPLETED")}
+                        />
                         <span>완료</span>
                     </label>
 
                     <label className={styles.Checkbox_Style}>
-                        <input type="checkbox" />
+                        <input
+                            type="radio"
+                            name="status"
+                            value="인계됨"
+                            checked={selectedStatus === "POLICE"}
+                            onChange={() => setSelectedStatus("POLICE")}
+                        />
                         <span>인계됨</span>
                     </label>
-
                 </div>
             </div>
 

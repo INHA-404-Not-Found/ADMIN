@@ -183,22 +183,36 @@ export const getAllPosts = async (setPostList, page = 1) => {
 
 
 // 게시물 목록 필터링 조회
-export const getPostsByTags = async (page = 1, status, type, locationId, categoryId) => {
+export const getPostsByTags = async (setPostList, page = 1, status, type, locationId, categoryId) => {
+    console.log("getPostsByTags start");
+    console.log(status, type);
+    
+    var FilterData = {
+        page: 1,
+    };
+    if(type != "ALL"){
+        FilterData.type = type;
+    }
+    if(status != ""){
+        FilterData.status = status;
+    }
+    
     try {
         const res = await api.get('/posts/tags', {
-            params: { 
-                page,
-                status,
-                type,
-                location_id: locationId,
-                category_id: categoryId
-            }
+            // params: { 
+            //     page,
+            //     status,
+            //     type,
+            //     location_id: locationId,
+            //     category_id: categoryId
+            // }
+            params: FilterData
         });
 
+        setPostList(res.data);
         console.log(res.data);
         console.log("getAllPosts: ", "성공");
 
-        return res.data;
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getPostsByTags 실패");

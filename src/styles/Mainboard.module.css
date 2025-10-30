@@ -112,7 +112,7 @@
     margin-right: 7px;
 }
 
-.Checkbox_Style [type="checkbox"]{
+.Checkbox_Style [type="radio"]{
     display: none;
 }
 
@@ -131,14 +131,14 @@
     color: gray;
 }
 
-.Checkbox_Style [type="checkbox"]:checked + span{
+.Checkbox_Style [type="radio"]:checked + span{
     border:3px solid #A8A8A8;
     background-color: #A8A8A8;
     color: #FFFFFF;
     font-weight: 700;
 }
 
-.Checkbox_Style [type="checkbox"]:disabled + span{
+.Checkbox_Style [type="radio"]:disabled + span{
     text-align: center;
     height:40px;
     width:100px;
