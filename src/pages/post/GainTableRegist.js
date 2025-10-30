@@ -1,14 +1,44 @@
-import { ITEM } from "../../assets/ItemAsset";
-import { LOCATION } from "../../assets/LocationAsset";
 import tableStyles from "../../styles/Table2.module.css";
 import checkboxStyle from "../../styles/CheckboxLabel.module.css";
 import toggleStyle from "../../styles/Toggle.module.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllCategories } from "../../api/category";
+import { getAllLocations } from "../../api/location";
 
 
-export default function GainTableRegist(){
-    const [toggleChecked, setToggleChecked] = useState(false);
+export default function GainTableRegist({
+    toggleChecked,
+    setToggleChecked,
+    setStudentId,
+    categories,
+    setCategories,
+    setLocation,
+    setLocationDetail,
+    setStorageLocation,
+    setTitle,
+    setContent
+}){
+    const [cateogryList, setCategoryList] = useState([]);
+    const [locationList, setLocationList] = useState([]);
+
+    useEffect(() => {
+        getAllCategories(setCategoryList);
+        getAllLocations(setLocationList);
+    }, []);
+
+    const handleCheckboxChange = (id) => {
+        setCategories((prev) => {
+        if (prev.includes(id)) {
+            // 이미 선택되어 있으면 제거
+            return prev.filter((item) => item !== id);
+        } else {
+            // 선택 안 되어 있으면 추가
+            return [...prev, id];
+        }
+        });
+    };
+    
 
     return (
         <>
@@ -43,6 +73,8 @@ export default function GainTableRegist(){
                                         borderRadius: "5px",
                                         flex: 1,
                                     }}
+
+                                    onChange={(e) => {setStudentId(e.target.value);}}
                                 />
                             </div>
                         </td>
@@ -51,10 +83,14 @@ export default function GainTableRegist(){
                         <th>물품 카테고리</th>
                         <td>
                         <div className={checkboxStyle.Checkbox_Style}>
-                            {ITEM.map((e) => (
-                                <label key={e}>
-                                    <input type="checkbox" />
-                                    <span>{e}</span>
+                            {cateogryList.map((e) => (
+                                <label key={e.id}>
+                                    <input
+                                        type="checkbox"
+                                        checked={categories.includes(e.id)}
+                                        onChange={() => handleCheckboxChange(e.id)}
+                                    />
+                                    <span>{e.name}</span>
                                 </label>
                             ))}
                         </div>
@@ -63,30 +99,37 @@ export default function GainTableRegist(){
                     <tr>
                         <th>습득 장소</th>
                         <td>
-                            <select id="location">
-                                {LOCATION.map((e) => (
-                                    <option key={e} value={e}>{e}</option>
+                            <select
+                                id="location"
+                                onChange={(e) => {setLocation(e.target.value)} }
+                            >
+                                {locationList.map((e) => (
+                                    <option key={e.id} value={e.name}>{e.name}</option>
                                 ))}
                             </select>
-                            <input type="text" style={{ marginTop: "4px" }}/>
+                            <input 
+                                type="text" 
+                                style={{ marginTop: "4px" }}
+                                onChange={(e) => {setLocationDetail(e.target.value);}}
+                            />
                         </td>
                     </tr>
                     <tr>
                         <th>보관 위치</th>
                         <td>
-                            <input type="text" />
+                            <input type="text" onChange={(e) => {setStorageLocation(e.target.value);}} />
                         </td>
                     </tr>
                     <tr>
                         <th>제목</th>
                         <td>
-                            <input type="text" />
+                            <input type="text" onChange={(e) => {setTitle(e.target.value);}} />
                         </td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea></textarea>
+                            <textarea onChange={(e) => {setContent(e.target.value);}} />
                         </td>
                     </tr>
                 </tbody>

@@ -1,8 +1,18 @@
+import { useState } from "react";
+import { registerPost } from "../../api/post";
 import ImageSetEdit from "../../components/ImageSetEdit";
 import GainTableRegist from "./GainTableRegist";
 
 export default function GainPostRegist ({ onClose }) {
-
+    const [toggleChecked, setToggleChecked] = useState(false);
+    const [studentId, setStudentId] = useState('');
+    const [categories, setCategories] = useState([]);
+    const [location, setLocation] = useState(1);
+    const [locationDetail, setLocationDetail] = useState('');
+    const [storageLocation, setStorageLocation] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    
     return (
         <div>
             {/* Header */}
@@ -39,7 +49,18 @@ export default function GainPostRegist ({ onClose }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <GainTableRegist />
+                <GainTableRegist 
+                    toggleChecked={toggleChecked}
+                    setToggleChecked={setToggleChecked}
+                    setStudentId={setStudentId}
+                    categories={categories}
+                    setCategories={setCategories}
+                    setLocation={setLocation}
+                    setLocationDetail={setLocationDetail}
+                    setStorageLocation={setStorageLocation}
+                    setTitle={setTitle}
+                    setContent={setContent}
+                />
             </div>
 
             {/* 수정 버튼 */}
@@ -73,6 +94,13 @@ export default function GainPostRegist ({ onClose }) {
                         borderRadius: "8px",
                         padding: "8px 40px",
                         cursor: "pointer",
+                    }}
+                    onClick={() => {
+                        registerPost(
+                            toggleChecked, studentId, categories,
+                            location, locationDetail, storageLocation, 
+                            title, content, "FIND"
+                        );
                     }}
                 >
                     저장하기
