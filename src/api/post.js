@@ -2,20 +2,47 @@ import api from "./api.js";
 
 
 // 게시물 등록
-export const registerPost = async () => {
+export const registerPost = async (
+    toggleChecked, studentId, categories,
+    location, locationDetail, storageLocation, 
+    title, content, type) => {
+
+    console.log(toggleChecked, studentId, categories,
+    location, locationDetail, storageLocation, 
+    title, content, type);
+    
+    var postData;
+    if (type== "FIND") {
+        postData = {
+            locationId: location,
+            title: title,
+            content: content,
+            storedLocation: storageLocation,
+            status: "UNCOMPLETED",
+            type: type,
+            isPersonal: toggleChecked,
+            categories: categories
+        };
+
+        if (studentId !== '') { postData.studentId = studentId; }
+        if (locationDetail !== '') { postData.locationDetail = locationDetail; }
+
+    } else if (type == "LOST") {
+        postData = {
+            locationId: location,
+            title: title,
+            content: content,
+            status: "UNCOMPLETED",
+            type: type,
+            categories: categories
+        };
+
+        if (locationDetail !== '') { postData.locationDetail = locationDetail; }
+    }
+
+    
     try {
-        const res = await api.post('/posts', {
-            locationId,
-            locationDetail,
-            title,
-            content,
-            storedLocation,
-            status,
-            type,
-            isPersonal,
-            studentId,
-            categories
-        });
+        const res = await api.post('/posts', postData);
         console.log("registerPost: ", res.data.message, "[게시글 ID: ", res.data.postId, "]");
         
     } catch (err) {
@@ -121,10 +148,14 @@ export const removePosts = async (postIds) => {
 
 
 // 한 게시물 가져오기
-export const getPost = async (post_id) => {
+export const getPost = async (setPostDetail, post_id) => {
+    console.log("getPost start");
+
     try {
         const res = await api.get('/posts/' + post_id);
-        console.log("getPost: ", post_id, " 가져오기 성공");
+
+        setPostDetail(res.data);
+        console.log("getPost: ", res.data);
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getPost 실패");
@@ -149,7 +180,7 @@ export const getAllPosts = async (setPostList, page = 1) => {
 
 
 // 게시물 목록 필터링 조회
-export const getPostsByTags = async ({ page = 1, status, type, locationId, categoryId }) => {
+export const getPostsByTags = async (page = 1, status, type, locationId, categoryId) => {
     try {
         const res = await api.get('/posts/tags', {
             params: { 
@@ -174,21 +205,23 @@ export const getPostsByTags = async ({ page = 1, status, type, locationId, categ
 
 
 // 게시물 키워드로 검색
-export const getPostsByKeyword = async ({ keyword, page = 1 }) => {
-    if (!keyword) { alert("검색어를 입력해주세요."); getAllPosts(); }
+export const getPostsByKeyword = async (setPostList, keyword, page = 1) => {
+    console.log("getPostsByKeyword start: " + keyword);
+
+    if (!keyword) { alert("검색어를 입력해주세요."); }
 
     try {
         const res = await api.get('/posts/search', {
             params: { 
-                keyword,
-                page
+                keyword: keyword,
+                page: page
             }
         });
 
-        console.log("getPostsByKeyword 성공");
+        console.log("getPostsByKeyword: " + res.data);
         console.log(res.data);
 
-        return res.data;
+        setPostList(res.data);
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getPostsByKeyword 실패");
