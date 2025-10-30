@@ -4,9 +4,11 @@ import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../../api/post";
+import { getPostsByKeyword } from './../../api/post';
 
 export default function Main({setShowPopUp, setType, setPostId}) {
     const [postList, setPostList] = useState([]);
+    const [keyword, setKeyword] = useState('');
 
     useEffect(() => {
         getAllPosts(setPostList, 1);
@@ -29,8 +31,16 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                     </select>
 
                     <div className={styles.Search_Input}>
-                        <input placeholder="게시글 IDX 검색 ex)1342" />
-                        <button type="submit">
+                        <input 
+                            placeholder="게시글 IDX 검색 ex)1342"
+                            onChange={(e) => {setKeyword(e.target.value)}}
+                        />
+                        <button
+                            type="submit"
+                            onClick={() => {
+                                getPostsByKeyword(setPostList, keyword, 1);
+                            }}
+                        >
                             <img src="./images/search.png" alt="finder" width="20" height="20" />
                         </button>
                     </div>
