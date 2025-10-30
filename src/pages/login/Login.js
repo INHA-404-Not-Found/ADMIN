@@ -1,10 +1,14 @@
 import styles from "../../styles/Login.module.css";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../api/auth";
 
 export default function Login() {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [studentId, setStudentId] = useState('');
+    const [pwd, setPwd] = useState('');
 
     return (
         <div className={styles.CenterAlignDiv}>
@@ -27,7 +31,7 @@ export default function Login() {
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
-                            alert('Sign In!');
+                            login(studentId, pwd, navigate);
                         }}
                     >
                         <div style={{ marginBottom: "40px" }}>
@@ -38,6 +42,7 @@ export default function Login() {
                                     type="text"
                                     className={styles.Input_txt}
                                     placeholder="value"
+                                    onChange={(e) => setStudentId(e.target.value)}
                                 />
                             </div>
 
@@ -49,6 +54,7 @@ export default function Login() {
                                         type={showPassword ? "text" : "password"}
                                         className={styles.Input_txt}
                                         placeholder="value"
+                                        onChange={(e) => setPwd(e.target.value)}
                                     />
                                     <button
                                         type="button"
@@ -62,13 +68,11 @@ export default function Login() {
                         </div>
 
                         <div>
-                            <Link to="/">
-                                <input
-                                    type="submit"
-                                    className={styles.Btn}
-                                    value="Sign In"
-                                />
-                            </Link>
+                            <input
+                                type="submit"
+                                className={styles.Btn}
+                                value="Sign In"
+                            />
                         </div>
                     </form>
                 </div>
