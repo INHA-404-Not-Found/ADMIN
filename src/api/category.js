@@ -1,0 +1,80 @@
+import api from "./api.js";
+
+
+// 카테고리 생성
+export const createCategory = async (name) => {
+    try {
+        await api.post('/categories',{
+            name
+        });
+
+        console.log("createCategory: ", '성공');
+        
+        navigate('/itemCategory');
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("createCategory 실패");
+    }
+};
+
+
+// 전체 카테고리 조회
+export const getAllCategories = async (name) => {
+    try {
+        await api.get('/categories');
+
+        console.log("getAllCategories: ", '성공');
+        
+        navigate('/itemCategory');
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("getAllCategories 실패");
+    }
+};
+
+
+// 단일 카테고리 조회
+export const getCategory = async (id) => {
+    try {
+        await api.get('/categories/' + id);
+
+        console.log("getCategory: ", '성공');
+        
+        navigate('/itemCategory');
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("getCategory 실패");
+    }
+};
+
+
+// 카테고리 수정
+export const updateCategory = async (id, name) => {
+    try {
+        await api.put('/categories/' + id, {
+            name
+        });
+
+        console.log("updateCategory: ", '성공');
+        
+        navigate('/itemCategory');
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("updateCategory 실패");
+    }
+};
+
+
+// 카테고리 삭제
+export const deleteCategory = async (id) => {
+    try {
+        await api.delete('/categories/' + id);
+
+        console.log("deleteCategory: ", '성공');
+        
+        navigate('/itemCategory');
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("deleteCategory 실패");
+    }
+};
