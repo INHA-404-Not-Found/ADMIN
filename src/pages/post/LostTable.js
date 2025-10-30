@@ -36,6 +36,8 @@ export default function LostTable({ postDetail }){
                         <th>상태</th>
                         <td>
                             { postDetail.status === "UNCOMPLETED" ? "미완료" : "" }
+                            { postDetail.status === "COMPLETED" ? "완료" : "" }
+                            { postDetail.status === "POLICE" ? "인계" : "" }
                         </td>
                     </tr>
                     <tr>
