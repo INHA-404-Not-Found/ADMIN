@@ -12,12 +12,12 @@
 
 .Search_Part {
     display: flex;
-    flex-direction: column; /* 가로 나열 */
+    flex-direction: column;
 }
 
 .Search {
     display: flex;
-    flex-direction: row; /* 가로 나열 */
+    flex-direction: row;
 }
 
 .State_Type_Select {
@@ -28,7 +28,6 @@
 .Search_Input {
     display: flex;
     padding: 5px 10px;
-    margin-left: 15px;
     border-radius: 5px;
     background-color: #DADEE7;
     align-items: center;
@@ -109,7 +108,7 @@
 
 .Checkbox_Style{
     font-size: 12px;
-    margin-right: 7px;
+    margin-right: 5px;
 }
 
 .Checkbox_Style [type="radio"]{
