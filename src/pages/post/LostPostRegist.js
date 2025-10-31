@@ -6,7 +6,7 @@ import { registerPost } from "../../api/post";
 
 export default function LostPostRegist ({ onClose }) {
     const [categories, setCategories] = useState([]);
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState(-1);
     const [locationDetail, setLocationDetail] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');

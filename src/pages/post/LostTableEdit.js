@@ -1,19 +1,9 @@
 import { ITEM } from "../../assets/ItemAsset";
 import tableStyles from "../../styles/Table2.module.css";
 import checkboxStyle from "../../styles/CheckboxLabel.module.css";
-import { getAllCategories } from "../../api/category";
-import { getAllLocations } from "../../api/location";
 import { useEffect, useState } from "react";
 
-export default function LostTableEdit({postDetail, setPostDetail}){
-    const [categoryList, setCategoryList] = useState([]);
-    const [locationList, setLocationList] = useState([]);
-
-    useEffect(() => {
-        getAllCategories(setCategoryList);
-        getAllLocations(setLocationList);
-    }, []);
-
+export default function LostTableEdit({postDetail, setPostDetail, categoryList, locationList}){
 
     return (
         <>
@@ -25,22 +15,24 @@ export default function LostTableEdit({postDetail, setPostDetail}){
                             <div className={checkboxStyle.Checkbox_Style}>
                                 {categoryList.map((e) => (
                                     <label key={e.id}>
-                                    <input
-                                        type="checkbox"
-                                        checked={postDetail.categories?.includes(e.name) || false} // postDetail.categories에 있으면 체크
-                                        onChange={() => {
-                                        setPostDetail((prev) => {
-                                            let updatedCategories;
-                                            if (prev.categories.includes(e.name)) {
-                                            updatedCategories = prev.categories.filter((c) => c !== e.name);
-                                            } else {
-                                            updatedCategories = [...prev.categories, e.name];
-                                            }
-                                            return { ...prev, categories: updatedCategories };
-                                        });
-                                        }}
-                                    />
-                                    <span>{e.name}</span>
+                                        <input
+                                            type="checkbox"
+                                            checked={postDetail.categories?.includes(e.name) || false} // postDetail.categories에 있으면 체크
+                                            onChange={() => {
+                                                setPostDetail((prev) => {
+                                                    let updatedCategories;
+
+                                                    if (prev.categories.includes(e.name)) {
+                                                        updatedCategories = prev.categories.filter((c) => c !== e.name);
+                                                    } else {
+                                                        updatedCategories = [...prev.categories, e.name];
+                                                    }
+                                                    
+                                                    return { ...prev, categories: updatedCategories };
+                                                });
+                                            }}
+                                        />
+                                        <span>{e.name}</span>
                                     </label>
                                 ))}
                             </div>
@@ -56,6 +48,7 @@ export default function LostTableEdit({postDetail, setPostDetail}){
                                     setPostDetail((prev) => ({ ...prev, locationName: e.target.value }))
                                 }
                             >
+                                <option key={-1} value="none">--미선택--</option>
                                 {locationList.map((e) => (
                                     <option key={e.id} value={e.name}>
                                     {e.name}

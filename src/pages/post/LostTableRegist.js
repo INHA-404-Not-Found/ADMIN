@@ -64,6 +64,7 @@ export default function LostTableRegist({
                                 id="location"
                                 onChange={(e) => {setLocation(e.target.value)} }
                             >
+                                <option key={-1} value="none">--미선택--</option>
                                 {locationList.map((e) => (
                                     <option key={e.id} value={e.name}>{e.name}</option>
                                 ))}

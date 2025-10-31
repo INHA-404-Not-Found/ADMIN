@@ -7,7 +7,7 @@ export default function GainPostRegist ({ onClose }) {
     const [toggleChecked, setToggleChecked] = useState(false);
     const [studentId, setStudentId] = useState('');
     const [categories, setCategories] = useState([]);
-    const [location, setLocation] = useState(1);
+    const [location, setLocation] = useState(-1);
     const [locationDetail, setLocationDetail] = useState('');
     const [storageLocation, setStorageLocation] = useState('');
     const [title, setTitle] = useState('');

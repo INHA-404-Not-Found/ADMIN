@@ -82,18 +82,18 @@ export default function GainTableRegist({
                     <tr>
                         <th>물품 카테고리</th>
                         <td>
-                        <div className={checkboxStyle.Checkbox_Style}>
-                            {cateogryList.map((e) => (
-                                <label key={e.id}>
-                                    <input
-                                        type="checkbox"
-                                        checked={categories.includes(e.id)}
-                                        onChange={() => handleCheckboxChange(e.id)}
-                                    />
-                                    <span>{e.name}</span>
-                                </label>
-                            ))}
-                        </div>
+                            <div className={checkboxStyle.Checkbox_Style}>
+                                {cateogryList.map((e) => (
+                                    <label key={e.id}>
+                                        <input
+                                            type="checkbox"
+                                            checked={categories.includes(e.id)}
+                                            onChange={() => handleCheckboxChange(e.id)}
+                                        />
+                                        <span>{e.name}</span>
+                                    </label>
+                                ))}
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -103,6 +103,7 @@ export default function GainTableRegist({
                                 id="location"
                                 onChange={(e) => {setLocation(e.target.value)} }
                             >
+                                <option key={-1} value="none">--미선택--</option>
                                 {locationList.map((e) => (
                                     <option key={e.id} value={e.name}>{e.name}</option>
                                 ))}

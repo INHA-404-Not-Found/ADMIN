@@ -5,11 +5,17 @@ import api from "./api.js";
 export const registerPost = async (
     toggleChecked, studentId, categories,
     location, locationDetail, storageLocation, 
-    title, content, type) => {
-
+    title, content, type 
+) => {
+    console.log("registerPost start");
     console.log(toggleChecked, studentId, categories,
-    location, locationDetail, storageLocation, 
-    title, content, type);
+        location, locationDetail, storageLocation, 
+        title, content, type
+    );
+
+    if(categories.length == 0) { alert("카테고리를 하나 이상 선택하세요."); return; }
+    if(location == -1) { alert("분실/습득 장소를 선택하세요."); return; }
+    if(title == "") { alert("제목을 입력하세요."); return; }
     
     var postData;
     if (type== "FIND") {
@@ -38,13 +44,15 @@ export const registerPost = async (
         };
 
         if (locationDetail !== '') { postData.locationDetail = locationDetail; }
-    }
+    } else { return; }
 
     
     try {
         const res = await api.post('/posts', postData);
+
         console.log("registerPost: ", res.data.message, "[게시글 ID: ", res.data.postId, "]");
-        
+        alert("『" + title + " 』가 등록되었습니다.");
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("registerPost 실패");
@@ -64,39 +72,37 @@ export const registerPostImage = async (post_id, files) => {
         console.error('에러 발생: ', err);
         alert("registerPostImage 실패");
     }
-
 };
 
 
 // 게시글 수정
-// export const modifyPost = async (post_id) => {
-//     try {
-//         const res = await api.patch('/posts/'+ post_id, {
-//             locationId,
-//             locationDetail,
-//             title,
-//             content,
-//             storedLocation,
-//             status,
-//             type,
-//             isPersonal,
-//             studentId,
-//             categories
-//         });
-//         console.log("modifyPost: ", res.data);
-//     } catch (err) {
-//         console.error('에러 발생: ', err);
-//         alert("modifyPost 실패");
-//     }
-// };
+export const modifyPost = async (post_id, postDetail) => {
+    console.log("modifyPost start");
+    console.log(postDetail);
+    
+    try {
+        const res = await api.patch('/posts/'+ post_id, postDetail);
+
+        console.log("modifyPost: ", res.data);
+        alert("『" + postDetail.title + " 』을 수정하였습니다.");
+
+    } catch (err) {
+        console.error('에러 발생: ', err);
+        alert("modifyPost 실패");
+    }
+};
 
 
-// 게시글 수정
+// 게시글 이미지 수정
 export const modifyPostImage = async (post_id, files) => {
+    console.log("modifyPostImage start");
+    console.log(files);
+
     try {
         const res = await api.patch('/posts/'+ post_id + '/images', {
             files
         });
+
         console.log("modifyPostImage: ", res.data);
     } catch (err) {
         console.error('에러 발생: ', err);
@@ -115,7 +121,9 @@ export const modifyPosts = async (postIds, status) => {
             postIds: postIds,
             status
         });
+
         console.log("modifyPosts: ", res.data);
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("modifyPosts 실패");
@@ -128,7 +136,9 @@ export const modifyPosts = async (postIds, status) => {
 export const removePost = async (post_id) => {
     try {
         const res = await api.delete('/posts/' + post_id);
+
         console.log("removePost: ", res.data);
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("removePost 실패");
@@ -142,7 +152,9 @@ export const removePosts = async (postIds) => {
         const res = await api.post('/posts/delete', {
             postIds
         });
+
         console.log("removePosts: ", res.data);
+        
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("removePosts 실패");
@@ -159,6 +171,7 @@ export const getPost = async (setPostDetail, post_id) => {
 
         setPostDetail(res.data);
         console.log("getPost: ", res.data);
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getPost 실패");
@@ -172,9 +185,11 @@ export const getAllPosts = async (setPostList, page = 1) => {
         const res = await api.get('/posts', {
             params: { page: page}
         });
+
         console.log(res.data);
         console.log("getAllPosts: ", "성공");
         setPostList(res.data);
+
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getAllPosts 실패");
@@ -190,22 +205,12 @@ export const getPostsByTags = async (setPostList, page = 1, status, type, locati
     var FilterData = {
         page: 1,
     };
-    if(type != "ALL"){
-        FilterData.type = type;
-    }
-    if(status != ""){
-        FilterData.status = status;
-    }
+
+    if(type != "ALL"){ FilterData.type = type; }
+    if(status != ""){ FilterData.status = status; }
     
     try {
         const res = await api.get('/posts/tags', {
-            // params: { 
-            //     page,
-            //     status,
-            //     type,
-            //     location_id: locationId,
-            //     category_id: categoryId
-            // }
             params: FilterData
         });
 
@@ -216,7 +221,6 @@ export const getPostsByTags = async (setPostList, page = 1, status, type, locati
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getPostsByTags 실패");
-        return null;
     }
 };
 
