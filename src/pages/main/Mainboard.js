@@ -45,21 +45,9 @@ export default function Main({setShowPopUp, setType, setPostId}) {
             {/*검색창*/}
             <div className={styles.Search_Part}>
                 <div className={styles.Search}>
-                    <select
-                        id="stateType"
-                        className={styles.State_Type_Select}
-                        onChange={(e) =>{
-                            setSelectedType(e.target.value);
-                        }}
-                    >
-                        <option id="stateType" value="ALL">전체</option>
-                        <option id="stateType" value="FIND">습득</option>
-                        <option id="stateType" value="LOST">분실</option>
-                    </select>
-
                     <div className={styles.Search_Input}>
                         <input 
-                            placeholder="게시글 IDX 검색 ex)1342"
+                            placeholder="게시글 검색"
                             onChange={(e) => {setKeyword(e.target.value)}}
                         />
                         <button
@@ -74,6 +62,19 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                 </div>
                 
                 <div className={styles.Search_Option}>
+                    <select
+                        id="stateType"
+                        className={styles.State_Type_Select}
+                        style={{ marginRight: "10px" }}
+                        onChange={(e) =>{
+                            setSelectedType(e.target.value);
+                        }}
+                    >
+                        <option id="stateType" value="ALL">전체</option>
+                        <option id="stateType" value="FIND">습득</option>
+                        <option id="stateType" value="LOST">분실</option>
+                    </select>
+
                     <label className={styles.Checkbox_Style}>
                         <input
                             type="radio"
