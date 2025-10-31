@@ -3,7 +3,7 @@ import styles from "../../styles/Mainboard.module.css";
 import tableStyles from "../../styles/Table.module.css";
 import pageStyles from "../../styles/Pagination.module.css";
 import { useEffect, useState } from "react";
-import { getAllPosts, getPostsByTags, modifyPosts, removePosts } from "../../api/post";
+import { getAllPosts, getPost, getPostsByTags, modifyPosts, removePosts } from "../../api/post";
 import { getPostsByKeyword } from './../../api/post';
 
 export default function Main({setShowPopUp, setType, setPostId}) {
@@ -36,7 +36,7 @@ export default function Main({setShowPopUp, setType, setPostId}) {
     useEffect(() => {
         getAllPosts(setPostList, 1);
     }, []);
-    
+
 
     {/*메인보드*/}
     return (
@@ -50,13 +50,18 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                 <div className={styles.Search}>
                     <div className={styles.Search_Input}>
                         <input 
-                            placeholder="게시글 검색"
+                            placeholder="게시글 검색 ex) 1234 / 검정색..."
                             onChange={(e) => {setKeyword(e.target.value)}}
                         />
                         <button
                             type="submit"
                             onClick={() => {
-                                getPostsByKeyword(setPostList, keyword, 1);
+                                if (!isNaN(keyword)) {
+                                    // 숫자 -> postId를 검색
+                                    getPost(setPostList, Number(keyword));
+                                } else { // 문자열 -> 게시글 제목 검색
+                                    getPostsByKeyword(setPostList, keyword, 1);
+                                }
                             }}
                         >
                             <img src="./images/search.png" alt="finder" width="20" height="20" />
@@ -172,7 +177,6 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                 <th>제목</th>
                                 <th>카테고리</th>
                                 <th>작성자</th>
-                                <th>수령인</th>
                                 <th>상태</th>
                             </tr>
                         </thead>
@@ -190,7 +194,7 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                         />
                                     </td>
                                     <td style={{ textAlign:"center" }}>{e.postId}</td>
-                                    <td style={{ textAlign:"center" }}>2025.10.10.금</td>
+                                    <td style={{ textAlign:"center" }}>{e.createdAt}</td>
                                     <td style={{ textAlign:"center" }}>
                                         {e.type == 'FIND' ? "습득" : "분실"}
                                     </td>
@@ -206,7 +210,6 @@ export default function Main({setShowPopUp, setType, setPostId}) {
                                     </td>
                                     <td style={{ textAlign: "left", padding: "0 5px" }}>{e.categories}</td>
                                     <td style={{ textAlign:"center" }}>{e.writer}</td>
-                                    <td style={{ textAlign:"center" }}>최지윤</td>
                                     <td style={{ textAlign:"center" }}>
                                         <StatusSelect status={e.status} type={e.type} postId={e.postId} />
                                     </td>
