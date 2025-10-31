@@ -19,6 +19,8 @@ export default function Main({setShowPopUp, setType, setPostId}) {
         getPostsByTags(setPostList, 1, selectedStatus, selectedType);
     }, [selectedStatus, selectedType])
 
+    
+    // 게시글 일괄 삭제, 상태 변경을 위해 checkbox 처리
     const handleCheckboxChange = (postId, checked) => {
         if (checked) {
             setPostIdList((prev) => [...prev, postId]);
@@ -34,6 +36,7 @@ export default function Main({setShowPopUp, setType, setPostId}) {
     useEffect(() => {
         getAllPosts(setPostList, 1);
     }, []);
+    
 
     {/*메인보드*/}
     return (
