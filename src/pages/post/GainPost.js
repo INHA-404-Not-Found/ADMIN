@@ -76,7 +76,10 @@ export default function GainPost ({ onClose, setType, postId }) {
                         padding: "8px 40px",
                         cursor: "pointer",
                     }}
-                    onClick={() => { setType("gain post edit"); }}
+                    onClick={() => { 
+                        setType("gain post edit"); 
+                        
+                    }}
                 >
                     수정하기
                 </button>

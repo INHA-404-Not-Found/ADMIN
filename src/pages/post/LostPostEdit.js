@@ -2,14 +2,40 @@ import LostTableEdit from "./LostTableEdit";
 import ImageSetEdit from "../../components/ImageSetEdit";
 import { useEffect, useState } from "react";
 import { getPost, modifyPost } from "../../api/post";
+import { getAllCategories } from "../../api/category";
+import { getAllLocations } from "../../api/location";
 
 export default function LostPostEdit ({ onClose, setType, postId }) {
+    const [categoryList, setCategoryList] = useState([]);
+    const [locationList, setLocationList] = useState([]);
+
+    useEffect(() => {
+        getAllCategories(setCategoryList);
+        getAllLocations(setLocationList);
+    }, []);
+    
     const [postDetail, setPostDetail] = useState([]);
     
     useEffect(() => {
         getPost(setPostDetail, postId);
         console.log(postDetail);
     }, [postId]);
+
+
+    // postDetail.categories: ['카테고리1', '카테고리2'] -> [1, 2]
+    const handleSave = async () => {
+        const categoryIds = categoryList
+            .filter(c => postDetail.categories.includes(c.name))
+            .map(c => c.id);
+
+        setPostDetail((prev) => ({
+            ...prev,
+            categories: categoryIds,
+        }));
+
+        console.log("보낼 데이터:", postDetail);
+        await modifyPost(postId, postDetail);
+    };
 
 
     return (
@@ -48,7 +74,12 @@ export default function LostPostEdit ({ onClose, setType, postId }) {
 
             {/* 게시글 내용 */}
             <div style={{ marginBottom: "20px" }}>
-                <LostTableEdit postDetail={postDetail} setPostDetail={setPostDetail} />
+                <LostTableEdit
+                    postDetail={postDetail}
+                    setPostDetail={setPostDetail} 
+                    categoryList={categoryList}
+                    locationList={locationList}
+                />
             </div>
 
             {/* 수정 버튼 */}
@@ -84,7 +115,7 @@ export default function LostPostEdit ({ onClose, setType, postId }) {
                         cursor: "pointer",
                     }}
                     onClick={() => {
-                        modifyPost(postId, postDetail);
+                        handleSave();
                     }}
                 >
                     수정 저장하기

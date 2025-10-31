@@ -4,22 +4,10 @@ import checkboxStyle from "../../styles/CheckboxLabel.module.css";
 import toggleStyle from "../../styles/Toggle.module.css";
 
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../../api/category";
-import { getAllLocations } from "../../api/location";
 
 
-export default function GainTableEdit({postDetail, setPostDetail}){
-    const [categoryList, setCategoryList] = useState([]);
-    const [locationList, setLocationList] = useState([]);
-
-    useEffect(() => {
-        getAllCategories(setCategoryList);
-        getAllLocations(setLocationList);
-    }, []);
-
-
-    const [toggleChecked, setToggleChecked] = useState(false);
-
+export default function GainTableEdit({postDetail, setPostDetail, categoryList, locationList}){
+    
     return (
         <>
             <table className={tableStyles.Table2}>
@@ -34,10 +22,11 @@ export default function GainTableEdit({postDetail, setPostDetail}){
                                     id="Toggle"
                                     className={toggleStyle.Toggle}
                                     checked={postDetail.isPersonal}
-                                    onChange={(e) => setToggleChecked(e.target.checked)}
+                                    onChange={(e) =>
+                                        setPostDetail((prev) => ({ ...prev, isPersonal: e.target.value }))
+                                    }
                                     hidden
                                 />
-
                                 <label htmlFor="Toggle" className={toggleStyle.ToggleSwitch}>
                                     <span className={toggleStyle.ToggleButton}></span>
                                 </label>
@@ -45,8 +34,8 @@ export default function GainTableEdit({postDetail, setPostDetail}){
                                 {/* 체크박스 상태에 따라 활성화/비활성화 */}
                                 <input
                                     type="text"
-                                    disabled={!toggleChecked}
-                                    placeholder={toggleChecked ? "작성 가능" : "토글 켜야 입력 가능"}
+                                    disabled={!postDetail.isPersonal}
+                                    placeholder={postDetail.isPersonal ? "작성 가능" : "토글 켜야 입력 가능"}
                                     style={{
                                         padding: "5px 10px",
                                         border: "1px solid #ccc",
@@ -63,22 +52,24 @@ export default function GainTableEdit({postDetail, setPostDetail}){
                             <div className={checkboxStyle.Checkbox_Style}>
                                 {categoryList.map((e) => (
                                     <label key={e.id}>
-                                    <input
-                                        type="checkbox"
-                                        checked={postDetail.categories?.includes(e.name) || false} // postDetail.categories에 있으면 체크
-                                        onChange={() => {
-                                        setPostDetail((prev) => {
-                                            let updatedCategories;
-                                            if (prev.categories.includes(e.name)) {
-                                            updatedCategories = prev.categories.filter((c) => c !== e.name);
-                                            } else {
-                                            updatedCategories = [...prev.categories, e.name];
-                                            }
-                                            return { ...prev, categories: updatedCategories };
-                                        });
-                                        }}
-                                    />
-                                    <span>{e.name}</span>
+                                        <input
+                                            type="checkbox"
+                                            checked={postDetail.categories?.includes(e.name) || false} // postDetail.categories에 있으면 체크
+                                            onChange={() => {
+                                                setPostDetail((prev) => {
+                                                    let updatedCategories;
+
+                                                    if (prev.categories.includes(e.name)) {
+                                                        updatedCategories = prev.categories.filter((c) => c !== e.name);
+                                                    } else {
+                                                        updatedCategories = [...prev.categories, e.name];
+                                                    }
+                                                    
+                                                    return { ...prev, categories: updatedCategories };
+                                                });
+                                            }}
+                                        />
+                                        <span>{e.name}</span>
                                     </label>
                                 ))}
                             </div>
@@ -94,6 +85,7 @@ export default function GainTableEdit({postDetail, setPostDetail}){
                                     setPostDetail((prev) => ({ ...prev, locationName: e.target.value }))
                                 }
                             >
+                                <option key={-1} value="none">--미선택--</option>
                                 {locationList.map((e) => (
                                     <option key={e.id} value={e.name}>
                                     {e.name}
