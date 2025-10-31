@@ -66,19 +66,42 @@ export default function LostTableEdit({postDetail, setPostDetail}){
                                 type="text" 
                                 style={{ marginTop: "4px" }}
                                 defaultValue={postDetail.locationDetail}
+                                onChange={(e) => {
+                                    setPostDetail((prev) => ({
+                                        ...prev,
+                                        locationDetail: e.target.value,
+                                    }));
+                                }}
                             />
                         </td>
                     </tr>
                     <tr>
                         <th>제목</th>
                         <td>
-                            <input type="text" defaultValue={postDetail.title} />
+                            <input 
+                                type="text"
+                                defaultValue={postDetail.title}
+                                onChange={(e) => {
+                                    setPostDetail((prev) => ({
+                                        ...prev,
+                                        title: e.target.value,
+                                    }));
+                                }}
+                            />
                         </td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea defaultValue={postDetail.content}></textarea>
+                            <textarea
+                                defaultValue={postDetail.content} 
+                                onChange={(e) => {
+                                    setPostDetail((prev) => ({
+                                        ...prev,
+                                        content: e.target.value,
+                                    }));
+                                }}
+                            />
                         </td>
                     </tr>
                 </tbody>

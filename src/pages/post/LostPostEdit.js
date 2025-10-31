@@ -1,7 +1,7 @@
 import LostTableEdit from "./LostTableEdit";
 import ImageSetEdit from "../../components/ImageSetEdit";
 import { useEffect, useState } from "react";
-import { getPost } from "../../api/post";
+import { getPost, modifyPost } from "../../api/post";
 
 export default function LostPostEdit ({ onClose, setType, postId }) {
     const [postDetail, setPostDetail] = useState([]);
@@ -82,6 +82,9 @@ export default function LostPostEdit ({ onClose, setType, postId }) {
                         borderRadius: "8px",
                         padding: "8px 40px",
                         cursor: "pointer",
+                    }}
+                    onClick={() => {
+                        modifyPost(postId, postDetail);
                     }}
                 >
                     수정 저장하기
