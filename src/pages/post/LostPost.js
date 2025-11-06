@@ -16,11 +16,9 @@ export default function LostPost({ onClose, setType, postId }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "80vh", // 전체 컴포넌트 높이 지정
-        border: "1px solid #ddd",
+        height: "80vh",
         borderRadius: "8px",
         padding: "15px",
-        backgroundColor: "#fff",
       }}
     >
       {/* Header */}

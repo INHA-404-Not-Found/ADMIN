@@ -26,10 +26,8 @@ export default function GainPost({ onClose, setType, postId }) {
         display: "flex",
         flexDirection: "column",
         height: "80vh",
-        border: "1px solid #ddd",
         borderRadius: "8px",
         padding: "15px",
-        backgroundColor: "#fff",
       }}
     >
       {/* Header */}
