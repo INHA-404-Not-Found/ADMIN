@@ -48,16 +48,17 @@ export default function ImageSetRegist({ images, setImages }) {
 
     
 
-    // 왼쪽 버튼 클릭 시
+
     const goLeft = () => {
-        if (images.length === 0) return;
-        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+        }
     };
 
-    // 오른쪽 버튼 클릭 시
     const goRight = () => {
-        if (images.length === 0) return;
-        setCurrentIndex((prev) => (prev + 1) % images.length);
+        if (currentIndex < images.length - 1) {
+            setCurrentIndex(prev => prev + 1);
+        }
     };
 
 
@@ -76,7 +77,10 @@ export default function ImageSetRegist({ images, setImages }) {
                     src="./images/left.png"
                     alt="left"
                     onClick={goLeft}
-                    style={{ cursor: "pointer" }}
+                    style={{ 
+                        cursor: currentIndex > 0 ? 'pointer' : 'default',
+                        opacity: currentIndex > 0 ? 1 : 0.3 // 투명도 조절
+                    }}
                 />
 
                 <div className={imageSet.Image_Container}>
@@ -100,12 +104,15 @@ export default function ImageSetRegist({ images, setImages }) {
                     )}
                 </div>
 
-                <img
+                <img 
                     className={imageSet.Icon}
                     src="./images/right.png"
                     alt="right"
                     onClick={goRight}
-                    style={{ cursor: "pointer" }}
+                    style={{
+                        cursor: currentIndex < images.length - 1  ? 'pointer' : 'default',
+                        opacity: currentIndex < images.length - 1  ? 1 : 0.3 // 투명도 조절
+                    }}
                 />
             </div>
 

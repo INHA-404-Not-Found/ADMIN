@@ -9,13 +9,15 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
   }, [images]);
 
   const handlePrev = () => {
-    if (images.length === 0) return;
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+    }
   };
 
   const handleNext = () => {
-    if (images.length === 0) return;
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+    if (currentIndex < images.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    }
   };
 
   const handleDelete = (index) => {
@@ -69,7 +71,10 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
           src="./images/left.png"
           alt="left"
           onClick={handlePrev}
-          style={{ cursor: 'pointer' }}
+          style={{ 
+            cursor: currentIndex > 0 ? 'pointer' : 'default',
+            opacity: currentIndex > 0 ? 1 : 0.3 // 투명도 조절
+          }}
         />
 
         <div className={imageSet.Image_Container}>
@@ -93,12 +98,15 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
           )}
         </div>
 
-        <img
+        <img 
           className={imageSet.Icon}
           src="./images/right.png"
           alt="right"
           onClick={handleNext}
-          style={{ cursor: 'pointer' }}
+          style={{
+            cursor: currentIndex < images.length - 1  ? 'pointer' : 'default',
+            opacity: currentIndex < images.length - 1  ? 1 : 0.3 // 투명도 조절
+          }}
         />
       </div>
 
