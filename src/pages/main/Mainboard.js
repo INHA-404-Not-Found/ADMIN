@@ -255,7 +255,13 @@ export default function MainBoard({showPopUp, setShowPopUp, setType, setPostId, 
                                     >
                                         {e.title}
                                     </td>
-                                    <td className="title" style={{ textAlign: "left", padding: "0 5px" }}>{e.categories}</td>
+                                    <td className="title" style={{ textAlign: "left", padding: "0 5px" }}>
+                                        {Array.isArray(e.categories) && e.categories.map((cat, idx) => (
+                                            <span key={idx}>
+                                                {cat}{idx < e.categories.length - 1 ? ' / ' : ''}
+                                            </span>
+                                        ))}
+                                    </td>
                                     <td style={{ textAlign:"center" }}>{e.writer}</td>
                                     <td style={{ textAlign:"center" }}>
                                         <StatusSelect 

@@ -19,7 +19,13 @@ export default function GainTable({ postDetail, receiver }) {
         </tr>
         <tr>
           <th>물품 카테고리</th>
-          <td>{postDetail.categories}</td>
+          <td>
+            {Array.isArray(postDetail.categories) && postDetail.categories.map((cat, idx) => (
+              <span key={idx}>
+                {cat}{idx < postDetail.categories.length - 1 ? ' / ' : ''}
+              </span>
+            ))}
+          </td>
         </tr>
         <tr>
           <th>습득 장소</th>
