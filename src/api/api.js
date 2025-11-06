@@ -66,8 +66,7 @@ api.interceptors.response.use(
 
         const newAccessToken = refreshRes.data.accessToken;
         TokenStore.setToken(newAccessToken);
-
-        profile();
+        
 
         // 실패했던 요청에 새 토큰 붙이기
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
