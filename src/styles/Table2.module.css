@@ -1,53 +1,63 @@
-/* Table2.module.css */
+/* Table2.module.css - 심플 디자인 */
 .Table2 {
   width: 100%;
   border-collapse: collapse;
+  font-family: "Pretendard", sans-serif;
+  font-size: 14px;
+  color: #333;
 }
 
-.Table2 th,
+/* 헤더 */
+.Table2 th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 데이터 셀 */
 .Table2 td {
-  border: none;
-  margin: 0;
-  text-align: left;
-  padding: 5px 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
 }
 
-.Table2 tbody tr {
-  height: 30px;
-}
-
-.Table2 [type="text"],
-.Table2 textarea {
-  width: 100%;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.Table2 select {
-  width: 50%;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.Table2 tbody th {
-  background-color: #DADEE7;
-  padding: 0 10px;
-  text-align: left;
-}
-
-.Table2 tbody td {
-  font-family: "Pretendard-Thin";
-  background-color: white;
-  padding: 0 10px;
-  text-align: left;
-}
-
-/* 체크박스 열 너비 */
+/* 체크박스 열 */
 .Table2 th:nth-child(1),
 .Table2 td:nth-child(1) {
-  width: 90px;
+  width: 80px;
+  text-align: center;
+}
+
+/* 제목 강조 */
+.Table2 td.title {
+  font-weight: 500;
+  color: #215294;
+  cursor: pointer;
+}
+
+/* 입력, textarea, select */
+.Table2 [type="text"],
+.Table2 textarea,
+.Table2 select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* textarea 높이 */
+.Table2 textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* 체크박스 */
+.Table2 input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
