@@ -185,10 +185,9 @@ export default function MainBoard({showPopUp, setShowPopUp, setType, setPostId, 
                         onClick={async () => {
                             if(window.confirm("삭제하면 복구할 수 없습니다.")){
                                 await removePosts(postIdList);
-
                                 await fetchPostList();
-                                
-                                alert("삭제");
+                                setPostIdList([]);
+                                alert(postIdList.length + "개를 삭제하였습니다.");
                             } else{
                                 alert("취소하였습니다.");
                             }
@@ -197,9 +196,11 @@ export default function MainBoard({showPopUp, setShowPopUp, setType, setPostId, 
                         삭제
                     </button>
                     <button
-                        onClick={() => {
+                        onClick={async () => {
                             if(window.confirm("경찰서에 인계를 완료하였습니까?")){
-                                modifyPosts(postIdList, "POLICE");
+                                await modifyPosts(postIdList, "POLICE");
+                                await fetchPostList();
+                                setPostIdList([]);
                                 alert(postIdList.length + "개의 상태를 인계로 변경하였습니다.");
                             } else{
                                 alert("취소하였습니다.");
