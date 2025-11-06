@@ -99,8 +99,11 @@ export default function LostPost({ onClose, setType, postId }) {
             cursor: "pointer",
           }}
           onClick={() => {
-            removePost(postId);
-            onClose();
+            if(window.confirm("삭제하시겠습니까?")){
+              alert("성공!");
+              removePost(postId);
+              onClose();
+            }
           }}
         >
           삭제하기
