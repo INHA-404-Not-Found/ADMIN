@@ -71,9 +71,8 @@ export default function ItemCategory() {
                                     style={{ textAlign:"center", cursor: "pointer" }}
                                     className="action modify"
                                     onClick={async () => {
-                                        const categoryName = prompt("수정할 카테고리 이름을 적으세요");
+                                        const categoryName = prompt("수정할 카테고리 이름을 적으세요.");
                                         if(!categoryName || categoryName.trim() === ""){
-                                            alert("실패하였습니다.");
                                             return;
                                         }
                                         await updateCategory(e.id, categoryName);
@@ -91,7 +90,7 @@ export default function ItemCategory() {
                                             await deleteCategory(e.id);
                                             fetchCategories();
                                         } else{
-                                            alert("실패하였습니다.")
+                                            alert("일치하지 않습니다.")
                                         }
                                     }}
                                 >
