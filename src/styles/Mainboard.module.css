@@ -56,10 +56,12 @@
 .Add_Input input{
     padding: 5px 10px;
     margin-right: 15px;
-    border: 1px solid gray;
+    border: 1px solid #DADEE7;
     border-radius: 5px;
     background-color: #FFFFFF;
     align-items: center;
+    box-shadow: 1 1 1 1px #DADEE7;
+    outline: none;
 }
 
 .Add_Input button{
@@ -68,8 +70,14 @@
     padding: 5px 15px;
     border-radius: 5px;
     border: none;
-    background-color: #D9D9D9;
+    background-color: #DADEE7;
+    box-shadow: 1 1 1 1px #DADEE7;
+    color: black;
     align-items: center;
+}
+
+.Add_Input button:hover{
+    background-color: #b0b3b8;
 }
 
 .Select_Option {

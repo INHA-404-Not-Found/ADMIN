@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    background-color: white;
 }
 
 .Part {   
@@ -24,12 +25,20 @@
 }
 
 .Input_txt {
-    width: 100%;
-    padding: 10px;
     box-sizing: border-box;
-
-    border: 1px solid #D9D9D9;
+    width: 100%;
+    border: 1px solid #DADEE7;
     border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    outline: none;
+    padding: 10px 12px;
+}
+
+.Input_txt:focus {
+    border-color: #0065B3;
+    box-shadow: 0 2px 6px rgba(0, 101, 179, 0.2);
 }
 
 .Input_Label_Container {
