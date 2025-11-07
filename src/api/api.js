@@ -48,7 +48,8 @@ api.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // 403 에러 -> refresh 한 번하고, 로그인 페이지로
+    if (error.response?.status === 403) {
       if (isRefreshing) {
         // 이미 refresh 요청 중이면 그대로 reject해서 무한 반복 방지
         return Promise.reject(error);
