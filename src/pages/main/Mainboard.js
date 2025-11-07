@@ -94,18 +94,18 @@ export default function MainBoard({showPopUp, setShowPopUp, setType, setPostId, 
                         />
                         <button
                             type="submit"
-                            onClick={() => {
+                            onClick={async () => {
                                 if (!isNaN(keyword)) {
                                     // 숫자 -> postId를 검색
                                     console.log("숫자" + Number(keyword) );
                                     
-                                    getPost(setTempList, Number(keyword));
+                                    await getPost(setTempList, Number(keyword));
                                     console.log("tempList: " + tempList);
                                     setPostList([tempList]);
                                     
                                 } else { // 문자열 -> 게시글 제목 검색
                                     console.log("문자열" + keyword );
-                                    getPostsByKeywordAndTags(setPostList, keyword, selectedStatus, selectedType, currentPage);
+                                    await getPostsByKeywordAndTags(setPostList, keyword, selectedStatus, selectedType, currentPage);
                                 }
                             }}
                         >
