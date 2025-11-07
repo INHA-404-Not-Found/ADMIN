@@ -69,13 +69,13 @@ export const profile = async () => {
         console.log(res.data);
         MY.setMY(res.data);
 
-        //alert("회원 정보 조회");
+        // alert("회원 정보 조회");
         console.log("회원 정보 조회: " + res.data);
         return res.data;
 
     } catch (err) {
         console.error('에러 발생:', err);
-        alert("회원 정보 조회 실패");
+        // alert("회원 정보 조회 실패");
     }
 };
 
