@@ -90,7 +90,7 @@ export default function GainPostEdit({ onClose, setType, postId }) {
       >
         {/* 이미지 영역 */}
         <div style={{ marginBottom: "20px" }}>
-          <ImageSetEdit images={editImagesList} setImages={setEditImageList} />
+          <ImageSetEdit images={editImagesList} setImages={setEditImageList} setChangeImage={setChangeImage} />
         </div>
 
         {/* 테이블 영역 */}
