@@ -16,11 +16,11 @@ export const registerReceiver = async (postId, receiver, email, phoneNumber, stu
         });
 
         console.log("registerReceiver: ", res.data.message, "[receiverId: ", res.data.receiverId, "]");
-        alert("수령인 정보가 등록되었습니다.");
+        // alert("수령인 정보가 등록되었습니다.");
 
     } catch (err) {
         console.error('에러 발생: ', err);
-        alert("registerReceiver 실패");
+        // alert("registerReceiver 실패");
     }
 };
 
@@ -52,7 +52,7 @@ export const deleteReceiver = async (receiver_id) => {
         
     } catch (err) {
         console.error('에러 발생: ', err);
-        alert("deleteReceiver 실패");
+        // alert("deleteReceiver 실패");
     }
 };
 
@@ -65,7 +65,7 @@ export const getReceiver = async (receiver_id) => {
         
     } catch (err) {
         console.error('에러 발생: ', err);
-        alert("getReceiver 실패");
+        // alert("getReceiver 실패");
     }
 };
 
@@ -82,7 +82,7 @@ export const getReceiverByPost = async (setReceiver, postId) => {
         
     } catch (err) {
         console.error('에러 발생: ', err);
-        alert("getReceiverByPost 실패");
+        // alert("getReceiverByPost 실패");
     }
 };
 
